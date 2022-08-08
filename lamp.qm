@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model version="5.1.4" links="0">
+ <framework name="qpc"/>
+ <package name="LampSM" stereotype="0x02">
+  <class name="Lamp" superclass="qpc::QHsm">
+   <documentation>lamp objeckt class</documentation>
+   <attribute name="state" type="uint8_t" visibility="0x00" properties="0x00">
+    <documentation>state of the lamp ON / OFF</documentation>
+    <code>= OFF;</code>
+   </attribute>
+   <operation name="pushSwitch" type="void" visibility="0x00" properties="0x00">
+    <code>QEvt e;
+e.sig = (QSignal)SOFT_CLICK_SIG;
+QHSM_DISPATCH(&amp;me-&gt;super, &amp;e, 0 );</code>
+   </operation>
+   <operation name="ctor" type="void" visibility="0x00" properties="0x00">
+    <documentation>Lamp constructor</documentation>
+    <code>QHsm_ctor(&amp;me-&gt;super, Q_STATE_CAST(&amp;Lamp_initial));</code>
+   </operation>
+   <statechart properties="0x00">
+    <initial target="../1">
+     <initial_glyph conn="8,40,5,3,12">
+      <action box="0,-3,10,2"/>
+     </initial_glyph>
+    </initial>
+    <state name="LED_RED">
+     <entry brief="LED_ON">APP_RED_LED_ON();</entry>
+     <exit brief="LED_OFF">APP_RED_LED_OFF();</exit>
+     <tran trig="SOFT_CLICK" target="../../2">
+      <tran_glyph conn="46,34,1,3,19">
+       <action box="0,-2,10,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="20,29,26,21">
+      <entry box="1,2,10,2"/>
+      <exit box="1,4,11,2"/>
+     </state_glyph>
+    </state>
+    <state name="LED_GREEN">
+     <entry brief="LED_ON">APP_GREEN_LED_ON();</entry>
+     <exit brief="LED_OFF">APP_GREEN_LED_OFF();</exit>
+     <tran trig="SOFT_CLICK" target="../../1">
+      <tran_glyph conn="65,46,3,1,-19">
+       <action box="0,-2,10,2"/>
+      </tran_glyph>
+     </tran>
+     <state_glyph node="65,29,26,21">
+      <entry box="1,2,11,2"/>
+      <exit box="1,4,12,2"/>
+     </state_glyph>
+    </state>
+    <state_diagram size="130,80"/>
+   </statechart>
+  </class>
+ </package>
+ <directory name="./SM/Includes">
+  <file name="signal.h">
+   <text>#include &quot;qpc.h&quot;
+#include &quot;app.h&quot;
+
+#define OFF   0
+#define ON    1
+
+enum LampSignals{
+    SOFT_CLICK_SIG = Q_USER_SIG,
+    MAX_SIG
+};
+
+
+$declare${LampSM}</text>
+  </file>
+ </directory>
+ <directory name="./SM/Src">
+  <file name="signal.c">
+   <text>#include &quot;signal.h&quot;
+
+
+
+$define${LampSM}
+</text>
+  </file>
+ </directory>
+</model>
