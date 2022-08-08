@@ -104,7 +104,7 @@ int main(void)
   while (1)
   {
 	  HAL_Delay(500);
-	  Lamp_pushSwitch(&lamp);
+//	  Lamp_pushSwitch(&lamp);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -272,11 +272,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : BUTTON_PIN_Pin */
-  GPIO_InitStruct.Pin = BUTTON_PIN_Pin;
+  /*Configure GPIO pin : BUTTON_Pin */
+  GPIO_InitStruct.Pin = BUTTON_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(BUTTON_PIN_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(BUTTON_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : B5_Pin VSYNC_Pin G2_Pin R4_Pin
                            R5_Pin */
@@ -445,11 +445,19 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF12_FMC;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
+  /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI2_IRQn);
+
 }
 
 /* USER CODE BEGIN 4 */
 void Q_onAssert( char const * 	module, int_t 	location ){
 	while(1);
+}
+
+void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
+	Lamp_pushSwitch(&lamp);
 }
 
 
