@@ -17,7 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-
+#include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -92,6 +92,7 @@ int main(void)
 
   Lamp_ctor(&lamp);
   QHSM_INIT( &lamp.super, (QEvt *)0, 0 );
+
   /* trigger initial transition */
 
 
@@ -104,8 +105,7 @@ int main(void)
   {
 	  HAL_Delay(500);
 	  Lamp_pushSwitch(&lamp);
-	  /* USER CODE END WHILE */
-
+    /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
 
@@ -266,11 +266,17 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : B1_Pin MEMS_INT1_Pin MEMS_INT2_Pin TP_INT1_Pin */
-  GPIO_InitStruct.Pin = B1_Pin|MEMS_INT1_Pin|MEMS_INT2_Pin|TP_INT1_Pin;
+  /*Configure GPIO pins : B1_Pin MEMS_INT1_Pin TP_INT1_Pin */
+  GPIO_InitStruct.Pin = B1_Pin|MEMS_INT1_Pin|TP_INT1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : BUTTON_PIN_Pin */
+  GPIO_InitStruct.Pin = BUTTON_PIN_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(BUTTON_PIN_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : B5_Pin VSYNC_Pin G2_Pin R4_Pin
                            R5_Pin */

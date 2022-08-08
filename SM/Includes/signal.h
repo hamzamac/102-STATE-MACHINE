@@ -24,6 +24,7 @@
 
 enum LampSignals{
     SOFT_CLICK_SIG = Q_USER_SIG,
+    HARD_CLICK_SIG,
     MAX_SIG
 };
 
@@ -41,9 +42,11 @@ typedef struct {
 /* public: */
 void Lamp_pushSwitch(Lamp * const me);
 void Lamp_ctor(Lamp * const me);
+void Lamp_holdSwitch(Lamp * const me);
 
 /* protected: */
 QState Lamp_initial(Lamp * const me, void const * const par);
 QState Lamp_LED_RED(Lamp * const me, QEvt const * const e);
+QState Lamp_BLINK(Lamp * const me, QEvt const * const e);
 QState Lamp_LED_GREEN(Lamp * const me, QEvt const * const e);
 /*.$enddecl${LampSM} ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^*/

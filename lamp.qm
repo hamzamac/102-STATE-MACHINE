@@ -17,7 +17,12 @@ QHSM_DISPATCH(&amp;me-&gt;super, &amp;e, 0 );</code>
     <documentation>Lamp constructor</documentation>
     <code>QHsm_ctor(&amp;me-&gt;super, Q_STATE_CAST(&amp;Lamp_initial));</code>
    </operation>
-   <statechart properties="0x00">
+   <operation name="holdSwitch" type="void" visibility="0x00" properties="0x00">
+    <code>QEvt e;
+e.sig = (QSignal)HARD_CLICK_SIG;
+QHSM_DISPATCH(&amp;me-&gt;super, &amp;e, 0 );</code>
+   </operation>
+   <statechart properties="0x01">
     <initial target="../1">
      <initial_glyph conn="8,40,5,3,12">
       <action box="0,-3,10,2"/>
@@ -31,6 +36,17 @@ QHSM_DISPATCH(&amp;me-&gt;super, &amp;e, 0 );</code>
        <action box="0,-2,10,2"/>
       </tran_glyph>
      </tran>
+     <tran trig="HARD_CLICK" target="../2">
+      <tran_glyph conn="20,43,3,3,13">
+       <action box="0,-2,10,2"/>
+      </tran_glyph>
+     </tran>
+     <state name="BLINK">
+      <entry brief="BLINK">APP_RED_LED_BLINK();</entry>
+      <state_glyph node="33,39,11,8">
+       <entry box="1,2,8,2"/>
+      </state_glyph>
+     </state>
      <state_glyph node="20,29,26,21">
       <entry box="1,2,10,2"/>
       <exit box="1,4,11,2"/>
@@ -63,6 +79,7 @@ QHSM_DISPATCH(&amp;me-&gt;super, &amp;e, 0 );</code>
 
 enum LampSignals{
     SOFT_CLICK_SIG = Q_USER_SIG,
+    HARD_CLICK_SIG,
     MAX_SIG
 };
 

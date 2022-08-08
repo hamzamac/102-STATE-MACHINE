@@ -95,8 +95,8 @@ void Error_Handler(void);
 #define B1_GPIO_Port GPIOA
 #define MEMS_INT1_Pin GPIO_PIN_1
 #define MEMS_INT1_GPIO_Port GPIOA
-#define MEMS_INT2_Pin GPIO_PIN_2
-#define MEMS_INT2_GPIO_Port GPIOA
+#define BUTTON_PIN_Pin GPIO_PIN_2
+#define BUTTON_PIN_GPIO_Port GPIOA
 #define B5_Pin GPIO_PIN_3
 #define B5_GPIO_Port GPIOA
 #define VSYNC_Pin GPIO_PIN_4

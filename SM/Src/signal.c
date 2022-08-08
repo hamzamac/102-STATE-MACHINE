@@ -40,6 +40,13 @@ void Lamp_ctor(Lamp * const me) {
     QHsm_ctor(&me->super, Q_STATE_CAST(&Lamp_initial));
 }
 
+/*.${LampSM::Lamp::holdSwitch} .............................................*/
+void Lamp_holdSwitch(Lamp * const me) {
+    QEvt e;
+    e.sig = (QSignal)HARD_CLICK_SIG;
+    QHSM_DISPATCH(&me->super, &e, 0 );
+}
+
 /*.${LampSM::Lamp::SM} .....................................................*/
 QState Lamp_initial(Lamp * const me, void const * const par) {
     /*.${LampSM::Lamp::SM::initial} */
@@ -66,8 +73,30 @@ QState Lamp_LED_RED(Lamp * const me, QEvt const * const e) {
             status_ = Q_TRAN(&Lamp_LED_GREEN);
             break;
         }
+        /*.${LampSM::Lamp::SM::LED_RED::HARD_CLICK} */
+        case HARD_CLICK_SIG: {
+            status_ = Q_TRAN(&Lamp_BLINK);
+            break;
+        }
         default: {
             status_ = Q_SUPER(&QHsm_top);
+            break;
+        }
+    }
+    return status_;
+}
+/*.${LampSM::Lamp::SM::LED_RED::BLINK} .....................................*/
+QState Lamp_BLINK(Lamp * const me, QEvt const * const e) {
+    QState status_;
+    switch (e->sig) {
+        /*.${LampSM::Lamp::SM::LED_RED::BLINK} */
+        case Q_ENTRY_SIG: {
+            APP_RED_LED_BLINK();
+            status_ = Q_HANDLED();
+            break;
+        }
+        default: {
+            status_ = Q_SUPER(&Lamp_LED_RED);
             break;
         }
     }
