@@ -21,5 +21,13 @@ void APP_RED_LED_BLINK();
 
 void uart_log(uint8_t * str);
 
+void taskAPP_GREEN_LED_ON(void *pvParameters);
+void taskAPP_GREEN_LED_OFF(void *pvParameters);
+void taskAPP_GREEN_LED_BLINK(void *pvParameters);
+
+void taskAPP_RED_LED_ON(void *pvParameters);
+void taskAPP_RED_LED_OFF(void *pvParameters);
+void taskAPP_RED_LED_BLINK(void *pvParameters);
+
 
 #endif /* INC_APP_H_ */

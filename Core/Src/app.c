@@ -7,6 +7,10 @@
 #include "app.h"
 #include <string.h>
 
+/* FreeRTOS Kernel includes. */
+#include "FreeRTOS.h"
+#include "task.h"
+
 extern UART_HandleTypeDef huart1;
 
 void APP_GREEN_LED_ON(){
@@ -47,5 +51,37 @@ void APP_RED_LED_BLINK(){
 
 void uart_log(uint8_t * str){
 	HAL_UART_Transmit(&huart1, str, strlen((char *)str), HAL_MAX_DELAY);
+}
+
+
+
+/*FreeRTOS Tasks*/
+void taskAPP_GREEN_LED_ON( void *pvParameters ){
+	APP_GREEN_LED_ON();
+	while(1);
+}
+
+void taskAPP_GREEN_LED_OFF( void *pvParameters ){
+	APP_GREEN_LED_OFF();
+	while(1);
+}
+
+void taskAPP_GREEN_LED_BLINK( void *pvParameters ){
+	APP_GREEN_LED_BLINK();
+	while(1);
+}
+
+void taskAPP_RED_LED_ON( void *pvParameters ){
+	APP_RED_LED_ON();
+	while(1);
+}
+
+void taskAPP_RED_LED_OFF( void *pvParameters ){
+	APP_RED_LED_OFF();
+	while(1);
+}
+void taskAPP_RED_LED_BLINK( void *pvParameters ){
+	APP_RED_LED_BLINK();
+	while(1);
 }
 

@@ -29,4 +29,11 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.managedBuildNature</nature>
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>FreeRTOS</name>
+			<type>2</type>
+			<location>C:/Users/cbj767/Embeded/FreeRTOS</location>
+		</link>
+	</linkedResources>
 </projectDescription>

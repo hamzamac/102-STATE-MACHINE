@@ -14,6 +14,9 @@ RM := rm -rf
 -include qpc/ports/arm-cm/qv/gnu/subdir.mk
 -include qpc/include/subdir.mk
 -include SM/Src/subdir.mk
+-include FreeRTOS/Source/portable/MemMang/subdir.mk
+-include FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
+-include FreeRTOS/Source/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk

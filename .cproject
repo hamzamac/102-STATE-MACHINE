@@ -35,6 +35,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/qpc/ports/arm-cm/qv}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/qpc/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/SM/Includes}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/FreeRTOS/Source/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/FreeRTOS/Source/portable/GCC/ARM_CM4F}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.431426680" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
 							</tool>
@@ -55,6 +57,8 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/qpc/ports/arm-cm/qv/gnu}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/qpc/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/SM/Includes}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/FreeRTOS/Source/include}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/FreeRTOS/Source/portable/GCC/ARM_CM4F}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.2123609815" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -103,6 +107,7 @@
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/qpc/ports/arm-cm/qv/gnu}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/qpc/include}&quot;"/>
 									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/SM/Includes}&quot;"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/102-STATE-MACHINE/FreeRTOS/Source/include}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1775175347" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
@@ -120,6 +125,7 @@
 						</toolChain>
 					</folderInfo>
 					<sourceEntries>
+						<entry excluding="Demo|Source/portable/MemMang/heap_5.c|Source/portable/MemMang/heap_3.c|Source/portable/MemMang/heap_2.c|Source/portable/MemMang/heap_1.c" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="FreeRTOS"/>
 						<entry excluding="Src/usart.c|Inc/usart.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
 						<entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="SM"/>
 						<entry excluding="ports/arm-cm/qxk|ports/arm-cm/qk|src/qk|src/qs|src/qxk|ports/qv/armclang" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="qpc"/>
@@ -156,6 +162,9 @@
 							<builder buildPath="${workspace_loc:/102-STATE-MACHINE}/Release" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder.176518281" keepEnvironmentInBuildfile="false" managedBuildOn="true" name="Gnu Make Builder" parallelBuildOn="true" parallelizationNumber="optimal" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.builder"/>
 							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.1500714073" name="MCU GCC Assembler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler">
 								<option id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.1271019218" name="Debug level" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel" value="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.debuglevel.value.g0" valueType="enumerated"/>
+								<option IS_BUILTIN_EMPTY="false" IS_VALUE_EMPTY="false" id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths.1803988445" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.option.includepaths" valueType="includePath">
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/FreeRTOS/Source/portable/GCC/ARM_CM4F}&quot;"/>
+								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input.824590130" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.assembler.input"/>
 							</tool>
 							<tool id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.1975162086" name="MCU GCC Compiler" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler">
@@ -171,6 +180,7 @@
 									<listOptionValue builtIn="false" value="../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Device/ST/STM32F4xx/Include"/>
 									<listOptionValue builtIn="false" value="../Drivers/CMSIS/Include"/>
+									<listOptionValue builtIn="false" value="&quot;${workspace_loc:/${ProjName}/FreeRTOS/Source/portable/GCC/ARM_CM4F}&quot;"/>
 								</option>
 								<inputType id="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c.1689589640" superClass="com.st.stm32cube.ide.mcu.gnu.managedbuild.tool.c.compiler.input.c"/>
 							</tool>
