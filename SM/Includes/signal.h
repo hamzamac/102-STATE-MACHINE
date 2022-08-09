@@ -38,6 +38,10 @@ typedef struct {
 
 /* public: */
     uint8_t state;
+
+/* private state histories */
+    QStateHandler hist_LED_RED;
+    QStateHandler hist_LED_GREEN;
 } Lamp;
 
 /* public: */

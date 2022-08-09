@@ -5,47 +5,47 @@ Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
   0 .isr_vector   000001ac  08000000  08000000  00010000  2**0
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  1 .text         00002d74  080001ac  080001ac  000101ac  2**2
+  1 .text         00002db0  080001ac  080001ac  000101ac  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .rodata       0000011c  08002f20  08002f20  00012f20  2**2
+  2 .rodata       0000011c  08002f5c  08002f5c  00012f5c  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  3 .ARM.extab    00000000  0800303c  0800303c  0002000c  2**0
+  3 .ARM.extab    00000000  08003078  08003078  0002000c  2**0
                   CONTENTS
-  4 .ARM          00000008  0800303c  0800303c  0001303c  2**2
+  4 .ARM          00000008  08003078  08003078  00013078  2**2
                   CONTENTS, ALLOC, LOAD, READONLY, DATA
-  5 .preinit_array 00000000  08003044  08003044  0002000c  2**0
+  5 .preinit_array 00000000  08003080  08003080  0002000c  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  6 .init_array   00000004  08003044  08003044  00013044  2**2
+  6 .init_array   00000004  08003080  08003080  00013080  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  7 .fini_array   00000004  08003048  08003048  00013048  2**2
+  7 .fini_array   00000004  08003084  08003084  00013084  2**2
                   CONTENTS, ALLOC, LOAD, DATA
-  8 .data         0000000c  20000000  0800304c  00020000  2**2
+  8 .data         0000000c  20000000  08003088  00020000  2**2
                   CONTENTS, ALLOC, LOAD, DATA
   9 .ccmram       00000000  10000000  10000000  0002000c  2**0
                   CONTENTS
- 10 .bss          00000074  2000000c  2000000c  0002000c  2**2
+ 10 .bss          0000007c  2000000c  2000000c  0002000c  2**2
                   ALLOC
- 11 ._user_heap_stack 00000600  20000080  20000080  0002000c  2**0
+ 11 ._user_heap_stack 00000600  20000088  20000088  0002000c  2**0
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  0002000c  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0000985a  00000000  00000000  0002003c  2**0
+ 13 .debug_info   000098a5  00000000  00000000  0002003c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 00001aa5  00000000  00000000  00029896  2**0
+ 14 .debug_abbrev 00001aa5  00000000  00000000  000298e1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00000740  00000000  00000000  0002b340  2**3
+ 15 .debug_aranges 00000740  00000000  00000000  0002b388  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_ranges 000006a8  00000000  00000000  0002ba80  2**3
+ 16 .debug_ranges 000006a8  00000000  00000000  0002bac8  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  0002314e  00000000  00000000  0002c128  2**0
+ 17 .debug_macro  0002314e  00000000  00000000  0002c170  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   00009208  00000000  00000000  0004f276  2**0
+ 18 .debug_line   0000921b  00000000  00000000  0004f2be  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000d373c  00000000  00000000  0005847e  2**0
+ 19 .debug_str    000d3758  00000000  00000000  000584d9  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000050  00000000  00000000  0012bbba  2**0
+ 20 .comment      00000050  00000000  00000000  0012bc31  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  00001c20  00000000  00000000  0012bc0c  2**2
+ 21 .debug_frame  00001c20  00000000  00000000  0012bc84  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -64,7 +64,7 @@ Disassembly of section .text:
  80001c2:	bd10      	pop	{r4, pc}
  80001c4:	2000000c 	.word	0x2000000c
  80001c8:	00000000 	.word	0x00000000
- 80001cc:	08002f08 	.word	0x08002f08
+ 80001cc:	08002f44 	.word	0x08002f44
 
 080001d0 <frame_dummy>:
  80001d0:	b508      	push	{r3, lr}
@@ -76,7 +76,7 @@ Disassembly of section .text:
  80001de:	bd08      	pop	{r3, pc}
  80001e0:	00000000 	.word	0x00000000
  80001e4:	20000010 	.word	0x20000010
- 80001e8:	08002f08 	.word	0x08002f08
+ 80001e8:	08002f44 	.word	0x08002f44
 
 080001ec <strlen>:
  80001ec:	4603      	mov	r3, r0
@@ -397,7 +397,7 @@ void APP_GREEN_LED_ON(){
  8000532:	3718      	adds	r7, #24
  8000534:	46bd      	mov	sp, r7
  8000536:	bdb0      	pop	{r4, r5, r7, pc}
- 8000538:	08002f20 	.word	0x08002f20
+ 8000538:	08002f5c 	.word	0x08002f5c
  800053c:	40021800 	.word	0x40021800
 
 08000540 <APP_GREEN_LED_OFF>:
@@ -428,7 +428,7 @@ void APP_GREEN_LED_OFF(){
  800056a:	3718      	adds	r7, #24
  800056c:	46bd      	mov	sp, r7
  800056e:	bdb0      	pop	{r4, r5, r7, pc}
- 8000570:	08002f34 	.word	0x08002f34
+ 8000570:	08002f70 	.word	0x08002f70
  8000574:	40021800 	.word	0x40021800
 
 08000578 <APP_GREEN_LED_BLINK>:
@@ -460,7 +460,7 @@ void APP_GREEN_LED_BLINK(){
  80005a6:	3718      	adds	r7, #24
  80005a8:	46bd      	mov	sp, r7
  80005aa:	bdb0      	pop	{r4, r5, r7, pc}
- 80005ac:	08002f48 	.word	0x08002f48
+ 80005ac:	08002f84 	.word	0x08002f84
  80005b0:	40021800 	.word	0x40021800
 
 080005b4 <APP_RED_LED_ON>:
@@ -491,7 +491,7 @@ void APP_RED_LED_ON(){
  80005de:	3718      	adds	r7, #24
  80005e0:	46bd      	mov	sp, r7
  80005e2:	bdb0      	pop	{r4, r5, r7, pc}
- 80005e4:	08002f60 	.word	0x08002f60
+ 80005e4:	08002f9c 	.word	0x08002f9c
  80005e8:	40021800 	.word	0x40021800
 
 080005ec <APP_RED_LED_OFF>:
@@ -522,7 +522,7 @@ void APP_RED_LED_OFF(){
  8000616:	3718      	adds	r7, #24
  8000618:	46bd      	mov	sp, r7
  800061a:	bdb0      	pop	{r4, r5, r7, pc}
- 800061c:	08002f74 	.word	0x08002f74
+ 800061c:	08002fb0 	.word	0x08002fb0
  8000620:	40021800 	.word	0x40021800
 
 08000624 <APP_RED_LED_BLINK>:
@@ -553,7 +553,7 @@ void APP_RED_LED_BLINK(){
  800064e:	46bd      	mov	sp, r7
  8000650:	bdb0      	pop	{r4, r5, r7, pc}
  8000652:	bf00      	nop
- 8000654:	08002f88 	.word	0x08002f88
+ 8000654:	08002fc4 	.word	0x08002fc4
  8000658:	40021800 	.word	0x40021800
 
 0800065c <uart_log>:
@@ -646,7 +646,7 @@ int main(void)
 	 HAL_Delay(1000);
  80006ce:	e7f7      	b.n	80006c0 <main+0x38>
  80006d0:	2000006c 	.word	0x2000006c
- 80006d4:	08002ff0 	.word	0x08002ff0
+ 80006d4:	0800302c 	.word	0x0800302c
 
 080006d8 <SystemClock_Config>:
 /**
@@ -663,7 +663,7 @@ void SystemClock_Config(void)
  80006e2:	2230      	movs	r2, #48	; 0x30
  80006e4:	2100      	movs	r1, #0
  80006e6:	4618      	mov	r0, r3
- 80006e8:	f002 fc06 	bl	8002ef8 <memset>
+ 80006e8:	f002 fc24 	bl	8002f34 <memset>
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
  80006ec:	f107 030c 	add.w	r3, r7, #12
  80006f0:	2200      	movs	r2, #0
@@ -1683,7 +1683,7 @@ void Q_onAssert( char const * 	module, int_t 	location ){
 	while(1);
  8000d44:	e7fe      	b.n	8000d44 <Q_onAssert+0x20>
  8000d46:	bf00      	nop
- 8000d48:	08002f9c 	.word	0x08002f9c
+ 8000d48:	08002fd8 	.word	0x08002fd8
 
 08000d4c <HAL_GPIO_EXTI_Callback>:
 }
@@ -1757,10 +1757,10 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
  8000dc6:	3750      	adds	r7, #80	; 0x50
  8000dc8:	46bd      	mov	sp, r7
  8000dca:	bdb0      	pop	{r4, r5, r7, pc}
- 8000dcc:	08002fac 	.word	0x08002fac
- 8000dd0:	08002fc4 	.word	0x08002fc4
+ 8000dcc:	08002fe8 	.word	0x08002fe8
+ 8000dd0:	08003000 	.word	0x08003000
  8000dd4:	2000006c 	.word	0x2000006c
- 8000dd8:	08002fd8 	.word	0x08002fd8
+ 8000dd8:	08003014 	.word	0x08003014
 
 08000ddc <Error_Handler>:
 /**
@@ -2241,7 +2241,7 @@ LoopFillZerobss:
  8000f86:	f7ff ffd7 	bl	8000f38 <SystemInit>
 /* Call static constructors */
     bl __libc_init_array
- 8000f8a:	f001 ff91 	bl	8002eb0 <__libc_init_array>
+ 8000f8a:	f001 ffaf 	bl	8002eec <__libc_init_array>
 /* Call the application's entry point.*/
   bl  main
  8000f8e:	f7ff fb7b 	bl	8000688 <main>
@@ -2254,11 +2254,11 @@ LoopFillZerobss:
   ldr r1, =_edata
  8000f9c:	2000000c 	.word	0x2000000c
   ldr r2, =_sidata
- 8000fa0:	0800304c 	.word	0x0800304c
+ 8000fa0:	08003088 	.word	0x08003088
   ldr r2, =_sbss
  8000fa4:	2000000c 	.word	0x2000000c
   ldr r4, =_ebss
- 8000fa8:	20000080 	.word	0x20000080
+ 8000fa8:	20000088 	.word	0x20000088
 
 08000fac <ADC_IRQHandler>:
  * @retval None       
@@ -2421,7 +2421,7 @@ __weak void HAL_IncTick(void)
  8001070:	4770      	bx	lr
  8001072:	bf00      	nop
  8001074:	20000008 	.word	0x20000008
- 8001078:	2000007c 	.word	0x2000007c
+ 8001078:	20000084 	.word	0x20000084
 
 0800107c <HAL_GetTick>:
   * @note This function is declared as __weak to be overwritten in case of other 
@@ -2441,7 +2441,7 @@ __weak uint32_t HAL_GetTick(void)
  8001088:	f85d 7b04 	ldr.w	r7, [sp], #4
  800108c:	4770      	bx	lr
  800108e:	bf00      	nop
- 8001090:	2000007c 	.word	0x2000007c
+ 8001090:	20000084 	.word	0x20000084
 
 08001094 <HAL_Delay>:
   *       implementations in user file.
@@ -4754,7 +4754,7 @@ HAL_StatusTypeDef HAL_RCC_ClockConfig(RCC_ClkInitTypeDef  *RCC_ClkInitStruct, ui
  8001d96:	bf00      	nop
  8001d98:	40023c00 	.word	0x40023c00
  8001d9c:	40023800 	.word	0x40023800
- 8001da0:	08003004 	.word	0x08003004
+ 8001da0:	08003040 	.word	0x08003040
  8001da4:	20000000 	.word	0x20000000
  8001da8:	20000004 	.word	0x20000004
 
@@ -5056,7 +5056,7 @@ uint32_t HAL_RCC_GetPCLK1Freq(void)
  8001fec:	4618      	mov	r0, r3
  8001fee:	bd80      	pop	{r7, pc}
  8001ff0:	40023800 	.word	0x40023800
- 8001ff4:	08003014 	.word	0x08003014
+ 8001ff4:	08003050 	.word	0x08003050
 
 08001ff8 <HAL_RCC_GetPCLK2Freq>:
   * @note   Each time PCLK2 changes, this function must be called to update the
@@ -5082,7 +5082,7 @@ uint32_t HAL_RCC_GetPCLK2Freq(void)
  8002014:	4618      	mov	r0, r3
  8002016:	bd80      	pop	{r7, pc}
  8002018:	40023800 	.word	0x40023800
- 800201c:	08003014 	.word	0x08003014
+ 800201c:	08003050 	.word	0x08003050
 
 08002020 <HAL_UART_Init>:
   * @param  huart  Pointer to a UART_HandleTypeDef structure that contains
@@ -6114,7 +6114,7 @@ void Lamp_ctor(Lamp * const me) {
  80027d0:	687b      	ldr	r3, [r7, #4]
  80027d2:	4904      	ldr	r1, [pc, #16]	; (80027e4 <Lamp_ctor+0x1c>)
  80027d4:	4618      	mov	r0, r3
- 80027d6:	f000 f91d 	bl	8002a14 <QHsm_ctor>
+ 80027d6:	f000 f93b 	bl	8002a50 <QHsm_ctor>
 }
  80027da:	bf00      	nop
  80027dc:	3708      	adds	r7, #8
@@ -6185,1286 +6185,1332 @@ QState Lamp_initial(Lamp * const me, void const * const par) {
  8002836:	6078      	str	r0, [r7, #4]
  8002838:	6039      	str	r1, [r7, #0]
     /*.${LampSM::Lamp::SM::initial} */
-    return Q_TRAN(&Lamp_LED_RED);
+    /* state history attributes */
+    me->hist_LED_RED = Q_STATE_CAST(&Lamp_RED_BLINK);
  800283a:	687b      	ldr	r3, [r7, #4]
- 800283c:	4a04      	ldr	r2, [pc, #16]	; (8002850 <Lamp_initial+0x20>)
- 800283e:	609a      	str	r2, [r3, #8]
- 8002840:	2308      	movs	r3, #8
+ 800283c:	4a07      	ldr	r2, [pc, #28]	; (800285c <Lamp_initial+0x2c>)
+ 800283e:	611a      	str	r2, [r3, #16]
+    me->hist_LED_GREEN = Q_STATE_CAST(&Lamp_GREEN_BLINK);
+ 8002840:	687b      	ldr	r3, [r7, #4]
+ 8002842:	4a07      	ldr	r2, [pc, #28]	; (8002860 <Lamp_initial+0x30>)
+ 8002844:	615a      	str	r2, [r3, #20]
+    return Q_TRAN(&Lamp_LED_RED);
+ 8002846:	687b      	ldr	r3, [r7, #4]
+ 8002848:	4a06      	ldr	r2, [pc, #24]	; (8002864 <Lamp_initial+0x34>)
+ 800284a:	609a      	str	r2, [r3, #8]
+ 800284c:	2308      	movs	r3, #8
 }
- 8002842:	4618      	mov	r0, r3
- 8002844:	370c      	adds	r7, #12
- 8002846:	46bd      	mov	sp, r7
- 8002848:	f85d 7b04 	ldr.w	r7, [sp], #4
- 800284c:	4770      	bx	lr
- 800284e:	bf00      	nop
- 8002850:	08002855 	.word	0x08002855
+ 800284e:	4618      	mov	r0, r3
+ 8002850:	370c      	adds	r7, #12
+ 8002852:	46bd      	mov	sp, r7
+ 8002854:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 8002858:	4770      	bx	lr
+ 800285a:	bf00      	nop
+ 800285c:	080028f1 	.word	0x080028f1
+ 8002860:	080029d9 	.word	0x080029d9
+ 8002864:	08002869 	.word	0x08002869
 
-08002854 <Lamp_LED_RED>:
+08002868 <Lamp_LED_RED>:
 /*.${LampSM::Lamp::SM::LED_RED} ............................................*/
 QState Lamp_LED_RED(Lamp * const me, QEvt const * const e) {
- 8002854:	b580      	push	{r7, lr}
- 8002856:	b084      	sub	sp, #16
- 8002858:	af00      	add	r7, sp, #0
- 800285a:	6078      	str	r0, [r7, #4]
- 800285c:	6039      	str	r1, [r7, #0]
+ 8002868:	b580      	push	{r7, lr}
+ 800286a:	b084      	sub	sp, #16
+ 800286c:	af00      	add	r7, sp, #0
+ 800286e:	6078      	str	r0, [r7, #4]
+ 8002870:	6039      	str	r1, [r7, #0]
     QState status_;
     switch (e->sig) {
- 800285e:	683b      	ldr	r3, [r7, #0]
- 8002860:	881b      	ldrh	r3, [r3, #0]
- 8002862:	3b01      	subs	r3, #1
- 8002864:	2b04      	cmp	r3, #4
- 8002866:	d823      	bhi.n	80028b0 <Lamp_LED_RED+0x5c>
- 8002868:	a201      	add	r2, pc, #4	; (adr r2, 8002870 <Lamp_LED_RED+0x1c>)
- 800286a:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
- 800286e:	bf00      	nop
- 8002870:	08002885 	.word	0x08002885
- 8002874:	0800288f 	.word	0x0800288f
- 8002878:	080028b1 	.word	0x080028b1
- 800287c:	08002899 	.word	0x08002899
- 8002880:	080028a5 	.word	0x080028a5
+ 8002872:	683b      	ldr	r3, [r7, #0]
+ 8002874:	881b      	ldrh	r3, [r3, #0]
+ 8002876:	3b01      	subs	r3, #1
+ 8002878:	2b04      	cmp	r3, #4
+ 800287a:	d82a      	bhi.n	80028d2 <Lamp_LED_RED+0x6a>
+ 800287c:	a201      	add	r2, pc, #4	; (adr r2, 8002884 <Lamp_LED_RED+0x1c>)
+ 800287e:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
+ 8002882:	bf00      	nop
+ 8002884:	08002899 	.word	0x08002899
+ 8002888:	080028a3 	.word	0x080028a3
+ 800288c:	080028d3 	.word	0x080028d3
+ 8002890:	080028b9 	.word	0x080028b9
+ 8002894:	080028c7 	.word	0x080028c7
         /*.${LampSM::Lamp::SM::LED_RED} */
         case Q_ENTRY_SIG: {
             APP_RED_LED_ON();
- 8002884:	f7fd fe96 	bl	80005b4 <APP_RED_LED_ON>
+ 8002898:	f7fd fe8c 	bl	80005b4 <APP_RED_LED_ON>
             status_ = Q_HANDLED();
- 8002888:	2303      	movs	r3, #3
- 800288a:	73fb      	strb	r3, [r7, #15]
+ 800289c:	2303      	movs	r3, #3
+ 800289e:	73fb      	strb	r3, [r7, #15]
             break;
- 800288c:	e016      	b.n	80028bc <Lamp_LED_RED+0x68>
+ 80028a0:	e01d      	b.n	80028de <Lamp_LED_RED+0x76>
         }
         /*.${LampSM::Lamp::SM::LED_RED} */
         case Q_EXIT_SIG: {
             APP_RED_LED_OFF();
- 800288e:	f7fd fead 	bl	80005ec <APP_RED_LED_OFF>
+ 80028a2:	f7fd fea3 	bl	80005ec <APP_RED_LED_OFF>
+            /* save deep history */
+            me->hist_LED_RED = QHsm_state(Q_HSM_UPCAST(me));
+ 80028a6:	6878      	ldr	r0, [r7, #4]
+ 80028a8:	f000 f8c6 	bl	8002a38 <QHsm_state>
+ 80028ac:	4602      	mov	r2, r0
+ 80028ae:	687b      	ldr	r3, [r7, #4]
+ 80028b0:	611a      	str	r2, [r3, #16]
             status_ = Q_HANDLED();
- 8002892:	2303      	movs	r3, #3
- 8002894:	73fb      	strb	r3, [r7, #15]
+ 80028b2:	2303      	movs	r3, #3
+ 80028b4:	73fb      	strb	r3, [r7, #15]
             break;
- 8002896:	e011      	b.n	80028bc <Lamp_LED_RED+0x68>
+ 80028b6:	e012      	b.n	80028de <Lamp_LED_RED+0x76>
         }
         /*.${LampSM::Lamp::SM::LED_RED::SOFT_CLICK} */
         case SOFT_CLICK_SIG: {
-            status_ = Q_TRAN(&Lamp_LED_GREEN);
- 8002898:	687b      	ldr	r3, [r7, #4]
- 800289a:	4a0b      	ldr	r2, [pc, #44]	; (80028c8 <Lamp_LED_RED+0x74>)
- 800289c:	609a      	str	r2, [r3, #8]
- 800289e:	2308      	movs	r3, #8
- 80028a0:	73fb      	strb	r3, [r7, #15]
+            status_ = Q_TRAN_HIST(me->hist_LED_GREEN);
+ 80028b8:	687b      	ldr	r3, [r7, #4]
+ 80028ba:	695a      	ldr	r2, [r3, #20]
+ 80028bc:	687b      	ldr	r3, [r7, #4]
+ 80028be:	609a      	str	r2, [r3, #8]
+ 80028c0:	230b      	movs	r3, #11
+ 80028c2:	73fb      	strb	r3, [r7, #15]
             break;
- 80028a2:	e00b      	b.n	80028bc <Lamp_LED_RED+0x68>
+ 80028c4:	e00b      	b.n	80028de <Lamp_LED_RED+0x76>
         }
         /*.${LampSM::Lamp::SM::LED_RED::HARD_CLICK} */
         case HARD_CLICK_SIG: {
             status_ = Q_TRAN(&Lamp_RED_BLINK);
- 80028a4:	687b      	ldr	r3, [r7, #4]
- 80028a6:	4a09      	ldr	r2, [pc, #36]	; (80028cc <Lamp_LED_RED+0x78>)
- 80028a8:	609a      	str	r2, [r3, #8]
- 80028aa:	2308      	movs	r3, #8
- 80028ac:	73fb      	strb	r3, [r7, #15]
+ 80028c6:	687b      	ldr	r3, [r7, #4]
+ 80028c8:	4a07      	ldr	r2, [pc, #28]	; (80028e8 <Lamp_LED_RED+0x80>)
+ 80028ca:	609a      	str	r2, [r3, #8]
+ 80028cc:	2308      	movs	r3, #8
+ 80028ce:	73fb      	strb	r3, [r7, #15]
             break;
- 80028ae:	e005      	b.n	80028bc <Lamp_LED_RED+0x68>
+ 80028d0:	e005      	b.n	80028de <Lamp_LED_RED+0x76>
         }
         default: {
             status_ = Q_SUPER(&QHsm_top);
- 80028b0:	687b      	ldr	r3, [r7, #4]
- 80028b2:	4a07      	ldr	r2, [pc, #28]	; (80028d0 <Lamp_LED_RED+0x7c>)
- 80028b4:	609a      	str	r2, [r3, #8]
- 80028b6:	2300      	movs	r3, #0
- 80028b8:	73fb      	strb	r3, [r7, #15]
+ 80028d2:	687b      	ldr	r3, [r7, #4]
+ 80028d4:	4a05      	ldr	r2, [pc, #20]	; (80028ec <Lamp_LED_RED+0x84>)
+ 80028d6:	609a      	str	r2, [r3, #8]
+ 80028d8:	2300      	movs	r3, #0
+ 80028da:	73fb      	strb	r3, [r7, #15]
             break;
- 80028ba:	bf00      	nop
+ 80028dc:	bf00      	nop
         }
     }
     return status_;
- 80028bc:	7bfb      	ldrb	r3, [r7, #15]
+ 80028de:	7bfb      	ldrb	r3, [r7, #15]
 }
- 80028be:	4618      	mov	r0, r3
- 80028c0:	3710      	adds	r7, #16
- 80028c2:	46bd      	mov	sp, r7
- 80028c4:	bd80      	pop	{r7, pc}
- 80028c6:	bf00      	nop
- 80028c8:	08002935 	.word	0x08002935
- 80028cc:	080028d5 	.word	0x080028d5
- 80028d0:	08002a45 	.word	0x08002a45
+ 80028e0:	4618      	mov	r0, r3
+ 80028e2:	3710      	adds	r7, #16
+ 80028e4:	46bd      	mov	sp, r7
+ 80028e6:	bd80      	pop	{r7, pc}
+ 80028e8:	080028f1 	.word	0x080028f1
+ 80028ec:	08002a81 	.word	0x08002a81
 
-080028d4 <Lamp_RED_BLINK>:
+080028f0 <Lamp_RED_BLINK>:
 /*.${LampSM::Lamp::SM::LED_RED::RED_BLINK} .................................*/
 QState Lamp_RED_BLINK(Lamp * const me, QEvt const * const e) {
- 80028d4:	b580      	push	{r7, lr}
- 80028d6:	b084      	sub	sp, #16
- 80028d8:	af00      	add	r7, sp, #0
- 80028da:	6078      	str	r0, [r7, #4]
- 80028dc:	6039      	str	r1, [r7, #0]
+ 80028f0:	b580      	push	{r7, lr}
+ 80028f2:	b084      	sub	sp, #16
+ 80028f4:	af00      	add	r7, sp, #0
+ 80028f6:	6078      	str	r0, [r7, #4]
+ 80028f8:	6039      	str	r1, [r7, #0]
     QState status_;
     switch (e->sig) {
- 80028de:	683b      	ldr	r3, [r7, #0]
- 80028e0:	881b      	ldrh	r3, [r3, #0]
- 80028e2:	2b06      	cmp	r3, #6
- 80028e4:	d012      	beq.n	800290c <Lamp_RED_BLINK+0x38>
- 80028e6:	2b06      	cmp	r3, #6
- 80028e8:	dc15      	bgt.n	8002916 <Lamp_RED_BLINK+0x42>
- 80028ea:	2b04      	cmp	r3, #4
- 80028ec:	d002      	beq.n	80028f4 <Lamp_RED_BLINK+0x20>
- 80028ee:	2b05      	cmp	r3, #5
- 80028f0:	d006      	beq.n	8002900 <Lamp_RED_BLINK+0x2c>
- 80028f2:	e010      	b.n	8002916 <Lamp_RED_BLINK+0x42>
+ 80028fa:	683b      	ldr	r3, [r7, #0]
+ 80028fc:	881b      	ldrh	r3, [r3, #0]
+ 80028fe:	2b06      	cmp	r3, #6
+ 8002900:	d013      	beq.n	800292a <Lamp_RED_BLINK+0x3a>
+ 8002902:	2b06      	cmp	r3, #6
+ 8002904:	dc16      	bgt.n	8002934 <Lamp_RED_BLINK+0x44>
+ 8002906:	2b04      	cmp	r3, #4
+ 8002908:	d002      	beq.n	8002910 <Lamp_RED_BLINK+0x20>
+ 800290a:	2b05      	cmp	r3, #5
+ 800290c:	d007      	beq.n	800291e <Lamp_RED_BLINK+0x2e>
+ 800290e:	e011      	b.n	8002934 <Lamp_RED_BLINK+0x44>
         /*.${LampSM::Lamp::SM::LED_RED::RED_BLINK::SOFT_CLICK} */
         case SOFT_CLICK_SIG: {
-            status_ = Q_TRAN(&Lamp_LED_GREEN);
- 80028f4:	687b      	ldr	r3, [r7, #4]
- 80028f6:	4a0d      	ldr	r2, [pc, #52]	; (800292c <Lamp_RED_BLINK+0x58>)
- 80028f8:	609a      	str	r2, [r3, #8]
- 80028fa:	2308      	movs	r3, #8
- 80028fc:	73fb      	strb	r3, [r7, #15]
+            status_ = Q_TRAN_HIST(me->hist_LED_GREEN);
+ 8002910:	687b      	ldr	r3, [r7, #4]
+ 8002912:	695a      	ldr	r2, [r3, #20]
+ 8002914:	687b      	ldr	r3, [r7, #4]
+ 8002916:	609a      	str	r2, [r3, #8]
+ 8002918:	230b      	movs	r3, #11
+ 800291a:	73fb      	strb	r3, [r7, #15]
             break;
- 80028fe:	e010      	b.n	8002922 <Lamp_RED_BLINK+0x4e>
+ 800291c:	e010      	b.n	8002940 <Lamp_RED_BLINK+0x50>
         }
         /*.${LampSM::Lamp::SM::LED_RED::RED_BLINK::HARD_CLICK} */
         case HARD_CLICK_SIG: {
             status_ = Q_TRAN(&Lamp_LED_RED);
- 8002900:	687b      	ldr	r3, [r7, #4]
- 8002902:	4a0b      	ldr	r2, [pc, #44]	; (8002930 <Lamp_RED_BLINK+0x5c>)
- 8002904:	609a      	str	r2, [r3, #8]
- 8002906:	2308      	movs	r3, #8
- 8002908:	73fb      	strb	r3, [r7, #15]
+ 800291e:	687b      	ldr	r3, [r7, #4]
+ 8002920:	4a0a      	ldr	r2, [pc, #40]	; (800294c <Lamp_RED_BLINK+0x5c>)
+ 8002922:	609a      	str	r2, [r3, #8]
+ 8002924:	2308      	movs	r3, #8
+ 8002926:	73fb      	strb	r3, [r7, #15]
             break;
- 800290a:	e00a      	b.n	8002922 <Lamp_RED_BLINK+0x4e>
+ 8002928:	e00a      	b.n	8002940 <Lamp_RED_BLINK+0x50>
         }
         /*.${LampSM::Lamp::SM::LED_RED::RED_BLINK::BLINK} */
         case BLINK_SIG: {
             APP_RED_LED_BLINK();
- 800290c:	f7fd fe8a 	bl	8000624 <APP_RED_LED_BLINK>
+ 800292a:	f7fd fe7b 	bl	8000624 <APP_RED_LED_BLINK>
             status_ = Q_HANDLED();
- 8002910:	2303      	movs	r3, #3
- 8002912:	73fb      	strb	r3, [r7, #15]
+ 800292e:	2303      	movs	r3, #3
+ 8002930:	73fb      	strb	r3, [r7, #15]
             break;
- 8002914:	e005      	b.n	8002922 <Lamp_RED_BLINK+0x4e>
+ 8002932:	e005      	b.n	8002940 <Lamp_RED_BLINK+0x50>
         }
         default: {
             status_ = Q_SUPER(&Lamp_LED_RED);
- 8002916:	687b      	ldr	r3, [r7, #4]
- 8002918:	4a05      	ldr	r2, [pc, #20]	; (8002930 <Lamp_RED_BLINK+0x5c>)
- 800291a:	609a      	str	r2, [r3, #8]
- 800291c:	2300      	movs	r3, #0
- 800291e:	73fb      	strb	r3, [r7, #15]
+ 8002934:	687b      	ldr	r3, [r7, #4]
+ 8002936:	4a05      	ldr	r2, [pc, #20]	; (800294c <Lamp_RED_BLINK+0x5c>)
+ 8002938:	609a      	str	r2, [r3, #8]
+ 800293a:	2300      	movs	r3, #0
+ 800293c:	73fb      	strb	r3, [r7, #15]
             break;
- 8002920:	bf00      	nop
+ 800293e:	bf00      	nop
         }
     }
     return status_;
- 8002922:	7bfb      	ldrb	r3, [r7, #15]
+ 8002940:	7bfb      	ldrb	r3, [r7, #15]
 }
- 8002924:	4618      	mov	r0, r3
- 8002926:	3710      	adds	r7, #16
- 8002928:	46bd      	mov	sp, r7
- 800292a:	bd80      	pop	{r7, pc}
- 800292c:	08002935 	.word	0x08002935
- 8002930:	08002855 	.word	0x08002855
+ 8002942:	4618      	mov	r0, r3
+ 8002944:	3710      	adds	r7, #16
+ 8002946:	46bd      	mov	sp, r7
+ 8002948:	bd80      	pop	{r7, pc}
+ 800294a:	bf00      	nop
+ 800294c:	08002869 	.word	0x08002869
 
-08002934 <Lamp_LED_GREEN>:
+08002950 <Lamp_LED_GREEN>:
 /*.${LampSM::Lamp::SM::LED_GREEN} ..........................................*/
 QState Lamp_LED_GREEN(Lamp * const me, QEvt const * const e) {
- 8002934:	b580      	push	{r7, lr}
- 8002936:	b084      	sub	sp, #16
- 8002938:	af00      	add	r7, sp, #0
- 800293a:	6078      	str	r0, [r7, #4]
- 800293c:	6039      	str	r1, [r7, #0]
+ 8002950:	b580      	push	{r7, lr}
+ 8002952:	b084      	sub	sp, #16
+ 8002954:	af00      	add	r7, sp, #0
+ 8002956:	6078      	str	r0, [r7, #4]
+ 8002958:	6039      	str	r1, [r7, #0]
     QState status_;
     switch (e->sig) {
- 800293e:	683b      	ldr	r3, [r7, #0]
- 8002940:	881b      	ldrh	r3, [r3, #0]
- 8002942:	3b01      	subs	r3, #1
- 8002944:	2b04      	cmp	r3, #4
- 8002946:	d823      	bhi.n	8002990 <Lamp_LED_GREEN+0x5c>
- 8002948:	a201      	add	r2, pc, #4	; (adr r2, 8002950 <Lamp_LED_GREEN+0x1c>)
- 800294a:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
- 800294e:	bf00      	nop
- 8002950:	08002965 	.word	0x08002965
- 8002954:	0800296f 	.word	0x0800296f
- 8002958:	08002991 	.word	0x08002991
- 800295c:	08002979 	.word	0x08002979
- 8002960:	08002985 	.word	0x08002985
+ 800295a:	683b      	ldr	r3, [r7, #0]
+ 800295c:	881b      	ldrh	r3, [r3, #0]
+ 800295e:	3b01      	subs	r3, #1
+ 8002960:	2b04      	cmp	r3, #4
+ 8002962:	d82a      	bhi.n	80029ba <Lamp_LED_GREEN+0x6a>
+ 8002964:	a201      	add	r2, pc, #4	; (adr r2, 800296c <Lamp_LED_GREEN+0x1c>)
+ 8002966:	f852 f023 	ldr.w	pc, [r2, r3, lsl #2]
+ 800296a:	bf00      	nop
+ 800296c:	08002981 	.word	0x08002981
+ 8002970:	0800298b 	.word	0x0800298b
+ 8002974:	080029bb 	.word	0x080029bb
+ 8002978:	080029a1 	.word	0x080029a1
+ 800297c:	080029af 	.word	0x080029af
         /*.${LampSM::Lamp::SM::LED_GREEN} */
         case Q_ENTRY_SIG: {
             APP_GREEN_LED_ON();
- 8002964:	f7fd fdcc 	bl	8000500 <APP_GREEN_LED_ON>
+ 8002980:	f7fd fdbe 	bl	8000500 <APP_GREEN_LED_ON>
             status_ = Q_HANDLED();
- 8002968:	2303      	movs	r3, #3
- 800296a:	73fb      	strb	r3, [r7, #15]
+ 8002984:	2303      	movs	r3, #3
+ 8002986:	73fb      	strb	r3, [r7, #15]
             break;
- 800296c:	e016      	b.n	800299c <Lamp_LED_GREEN+0x68>
+ 8002988:	e01d      	b.n	80029c6 <Lamp_LED_GREEN+0x76>
         }
         /*.${LampSM::Lamp::SM::LED_GREEN} */
         case Q_EXIT_SIG: {
             APP_GREEN_LED_OFF();
- 800296e:	f7fd fde7 	bl	8000540 <APP_GREEN_LED_OFF>
+ 800298a:	f7fd fdd9 	bl	8000540 <APP_GREEN_LED_OFF>
+            /* save deep history */
+            me->hist_LED_GREEN = QHsm_state(Q_HSM_UPCAST(me));
+ 800298e:	6878      	ldr	r0, [r7, #4]
+ 8002990:	f000 f852 	bl	8002a38 <QHsm_state>
+ 8002994:	4602      	mov	r2, r0
+ 8002996:	687b      	ldr	r3, [r7, #4]
+ 8002998:	615a      	str	r2, [r3, #20]
             status_ = Q_HANDLED();
- 8002972:	2303      	movs	r3, #3
- 8002974:	73fb      	strb	r3, [r7, #15]
+ 800299a:	2303      	movs	r3, #3
+ 800299c:	73fb      	strb	r3, [r7, #15]
             break;
- 8002976:	e011      	b.n	800299c <Lamp_LED_GREEN+0x68>
+ 800299e:	e012      	b.n	80029c6 <Lamp_LED_GREEN+0x76>
         }
         /*.${LampSM::Lamp::SM::LED_GREEN::SOFT_CLICK} */
         case SOFT_CLICK_SIG: {
-            status_ = Q_TRAN(&Lamp_LED_RED);
- 8002978:	687b      	ldr	r3, [r7, #4]
- 800297a:	4a0b      	ldr	r2, [pc, #44]	; (80029a8 <Lamp_LED_GREEN+0x74>)
- 800297c:	609a      	str	r2, [r3, #8]
- 800297e:	2308      	movs	r3, #8
- 8002980:	73fb      	strb	r3, [r7, #15]
+            status_ = Q_TRAN_HIST(me->hist_LED_RED);
+ 80029a0:	687b      	ldr	r3, [r7, #4]
+ 80029a2:	691a      	ldr	r2, [r3, #16]
+ 80029a4:	687b      	ldr	r3, [r7, #4]
+ 80029a6:	609a      	str	r2, [r3, #8]
+ 80029a8:	230b      	movs	r3, #11
+ 80029aa:	73fb      	strb	r3, [r7, #15]
             break;
- 8002982:	e00b      	b.n	800299c <Lamp_LED_GREEN+0x68>
+ 80029ac:	e00b      	b.n	80029c6 <Lamp_LED_GREEN+0x76>
         }
         /*.${LampSM::Lamp::SM::LED_GREEN::HARD_CLICK} */
         case HARD_CLICK_SIG: {
             status_ = Q_TRAN(&Lamp_GREEN_BLINK);
- 8002984:	687b      	ldr	r3, [r7, #4]
- 8002986:	4a09      	ldr	r2, [pc, #36]	; (80029ac <Lamp_LED_GREEN+0x78>)
- 8002988:	609a      	str	r2, [r3, #8]
- 800298a:	2308      	movs	r3, #8
- 800298c:	73fb      	strb	r3, [r7, #15]
+ 80029ae:	687b      	ldr	r3, [r7, #4]
+ 80029b0:	4a07      	ldr	r2, [pc, #28]	; (80029d0 <Lamp_LED_GREEN+0x80>)
+ 80029b2:	609a      	str	r2, [r3, #8]
+ 80029b4:	2308      	movs	r3, #8
+ 80029b6:	73fb      	strb	r3, [r7, #15]
             break;
- 800298e:	e005      	b.n	800299c <Lamp_LED_GREEN+0x68>
+ 80029b8:	e005      	b.n	80029c6 <Lamp_LED_GREEN+0x76>
         }
         default: {
             status_ = Q_SUPER(&QHsm_top);
- 8002990:	687b      	ldr	r3, [r7, #4]
- 8002992:	4a07      	ldr	r2, [pc, #28]	; (80029b0 <Lamp_LED_GREEN+0x7c>)
- 8002994:	609a      	str	r2, [r3, #8]
- 8002996:	2300      	movs	r3, #0
- 8002998:	73fb      	strb	r3, [r7, #15]
+ 80029ba:	687b      	ldr	r3, [r7, #4]
+ 80029bc:	4a05      	ldr	r2, [pc, #20]	; (80029d4 <Lamp_LED_GREEN+0x84>)
+ 80029be:	609a      	str	r2, [r3, #8]
+ 80029c0:	2300      	movs	r3, #0
+ 80029c2:	73fb      	strb	r3, [r7, #15]
             break;
- 800299a:	bf00      	nop
+ 80029c4:	bf00      	nop
         }
     }
     return status_;
- 800299c:	7bfb      	ldrb	r3, [r7, #15]
+ 80029c6:	7bfb      	ldrb	r3, [r7, #15]
 }
- 800299e:	4618      	mov	r0, r3
- 80029a0:	3710      	adds	r7, #16
- 80029a2:	46bd      	mov	sp, r7
- 80029a4:	bd80      	pop	{r7, pc}
- 80029a6:	bf00      	nop
- 80029a8:	08002855 	.word	0x08002855
- 80029ac:	080029b5 	.word	0x080029b5
- 80029b0:	08002a45 	.word	0x08002a45
+ 80029c8:	4618      	mov	r0, r3
+ 80029ca:	3710      	adds	r7, #16
+ 80029cc:	46bd      	mov	sp, r7
+ 80029ce:	bd80      	pop	{r7, pc}
+ 80029d0:	080029d9 	.word	0x080029d9
+ 80029d4:	08002a81 	.word	0x08002a81
 
-080029b4 <Lamp_GREEN_BLINK>:
+080029d8 <Lamp_GREEN_BLINK>:
 /*.${LampSM::Lamp::SM::LED_GREEN::GREEN_BLINK} .............................*/
 QState Lamp_GREEN_BLINK(Lamp * const me, QEvt const * const e) {
- 80029b4:	b580      	push	{r7, lr}
- 80029b6:	b084      	sub	sp, #16
- 80029b8:	af00      	add	r7, sp, #0
- 80029ba:	6078      	str	r0, [r7, #4]
- 80029bc:	6039      	str	r1, [r7, #0]
+ 80029d8:	b580      	push	{r7, lr}
+ 80029da:	b084      	sub	sp, #16
+ 80029dc:	af00      	add	r7, sp, #0
+ 80029de:	6078      	str	r0, [r7, #4]
+ 80029e0:	6039      	str	r1, [r7, #0]
     QState status_;
     switch (e->sig) {
- 80029be:	683b      	ldr	r3, [r7, #0]
- 80029c0:	881b      	ldrh	r3, [r3, #0]
- 80029c2:	2b06      	cmp	r3, #6
- 80029c4:	d006      	beq.n	80029d4 <Lamp_GREEN_BLINK+0x20>
- 80029c6:	2b06      	cmp	r3, #6
- 80029c8:	dc15      	bgt.n	80029f6 <Lamp_GREEN_BLINK+0x42>
- 80029ca:	2b04      	cmp	r3, #4
- 80029cc:	d00d      	beq.n	80029ea <Lamp_GREEN_BLINK+0x36>
- 80029ce:	2b05      	cmp	r3, #5
- 80029d0:	d005      	beq.n	80029de <Lamp_GREEN_BLINK+0x2a>
- 80029d2:	e010      	b.n	80029f6 <Lamp_GREEN_BLINK+0x42>
+ 80029e2:	683b      	ldr	r3, [r7, #0]
+ 80029e4:	881b      	ldrh	r3, [r3, #0]
+ 80029e6:	2b06      	cmp	r3, #6
+ 80029e8:	d006      	beq.n	80029f8 <Lamp_GREEN_BLINK+0x20>
+ 80029ea:	2b06      	cmp	r3, #6
+ 80029ec:	dc16      	bgt.n	8002a1c <Lamp_GREEN_BLINK+0x44>
+ 80029ee:	2b04      	cmp	r3, #4
+ 80029f0:	d00d      	beq.n	8002a0e <Lamp_GREEN_BLINK+0x36>
+ 80029f2:	2b05      	cmp	r3, #5
+ 80029f4:	d005      	beq.n	8002a02 <Lamp_GREEN_BLINK+0x2a>
+ 80029f6:	e011      	b.n	8002a1c <Lamp_GREEN_BLINK+0x44>
         /*.${LampSM::Lamp::SM::LED_GREEN::GREEN_BLINK::BLINK} */
         case BLINK_SIG: {
             APP_GREEN_LED_BLINK();
- 80029d4:	f7fd fdd0 	bl	8000578 <APP_GREEN_LED_BLINK>
+ 80029f8:	f7fd fdbe 	bl	8000578 <APP_GREEN_LED_BLINK>
             status_ = Q_HANDLED();
- 80029d8:	2303      	movs	r3, #3
- 80029da:	73fb      	strb	r3, [r7, #15]
+ 80029fc:	2303      	movs	r3, #3
+ 80029fe:	73fb      	strb	r3, [r7, #15]
             break;
- 80029dc:	e011      	b.n	8002a02 <Lamp_GREEN_BLINK+0x4e>
+ 8002a00:	e012      	b.n	8002a28 <Lamp_GREEN_BLINK+0x50>
         }
         /*.${LampSM::Lamp::SM::LED_GREEN::GREEN_BLINK::HARD_CLICK} */
         case HARD_CLICK_SIG: {
             status_ = Q_TRAN(&Lamp_LED_GREEN);
- 80029de:	687b      	ldr	r3, [r7, #4]
- 80029e0:	4a0a      	ldr	r2, [pc, #40]	; (8002a0c <Lamp_GREEN_BLINK+0x58>)
- 80029e2:	609a      	str	r2, [r3, #8]
- 80029e4:	2308      	movs	r3, #8
- 80029e6:	73fb      	strb	r3, [r7, #15]
+ 8002a02:	687b      	ldr	r3, [r7, #4]
+ 8002a04:	4a0b      	ldr	r2, [pc, #44]	; (8002a34 <Lamp_GREEN_BLINK+0x5c>)
+ 8002a06:	609a      	str	r2, [r3, #8]
+ 8002a08:	2308      	movs	r3, #8
+ 8002a0a:	73fb      	strb	r3, [r7, #15]
             break;
- 80029e8:	e00b      	b.n	8002a02 <Lamp_GREEN_BLINK+0x4e>
+ 8002a0c:	e00c      	b.n	8002a28 <Lamp_GREEN_BLINK+0x50>
         }
         /*.${LampSM::Lamp::SM::LED_GREEN::GREEN_BLINK::SOFT_CLICK} */
         case SOFT_CLICK_SIG: {
-            status_ = Q_TRAN(&Lamp_LED_RED);
- 80029ea:	687b      	ldr	r3, [r7, #4]
- 80029ec:	4a08      	ldr	r2, [pc, #32]	; (8002a10 <Lamp_GREEN_BLINK+0x5c>)
- 80029ee:	609a      	str	r2, [r3, #8]
- 80029f0:	2308      	movs	r3, #8
- 80029f2:	73fb      	strb	r3, [r7, #15]
+            status_ = Q_TRAN_HIST(me->hist_LED_RED);
+ 8002a0e:	687b      	ldr	r3, [r7, #4]
+ 8002a10:	691a      	ldr	r2, [r3, #16]
+ 8002a12:	687b      	ldr	r3, [r7, #4]
+ 8002a14:	609a      	str	r2, [r3, #8]
+ 8002a16:	230b      	movs	r3, #11
+ 8002a18:	73fb      	strb	r3, [r7, #15]
             break;
- 80029f4:	e005      	b.n	8002a02 <Lamp_GREEN_BLINK+0x4e>
+ 8002a1a:	e005      	b.n	8002a28 <Lamp_GREEN_BLINK+0x50>
         }
         default: {
             status_ = Q_SUPER(&Lamp_LED_GREEN);
- 80029f6:	687b      	ldr	r3, [r7, #4]
- 80029f8:	4a04      	ldr	r2, [pc, #16]	; (8002a0c <Lamp_GREEN_BLINK+0x58>)
- 80029fa:	609a      	str	r2, [r3, #8]
- 80029fc:	2300      	movs	r3, #0
- 80029fe:	73fb      	strb	r3, [r7, #15]
+ 8002a1c:	687b      	ldr	r3, [r7, #4]
+ 8002a1e:	4a05      	ldr	r2, [pc, #20]	; (8002a34 <Lamp_GREEN_BLINK+0x5c>)
+ 8002a20:	609a      	str	r2, [r3, #8]
+ 8002a22:	2300      	movs	r3, #0
+ 8002a24:	73fb      	strb	r3, [r7, #15]
             break;
- 8002a00:	bf00      	nop
+ 8002a26:	bf00      	nop
         }
     }
     return status_;
- 8002a02:	7bfb      	ldrb	r3, [r7, #15]
+ 8002a28:	7bfb      	ldrb	r3, [r7, #15]
 }
- 8002a04:	4618      	mov	r0, r3
- 8002a06:	3710      	adds	r7, #16
- 8002a08:	46bd      	mov	sp, r7
- 8002a0a:	bd80      	pop	{r7, pc}
- 8002a0c:	08002935 	.word	0x08002935
- 8002a10:	08002855 	.word	0x08002855
+ 8002a2a:	4618      	mov	r0, r3
+ 8002a2c:	3710      	adds	r7, #16
+ 8002a2e:	46bd      	mov	sp, r7
+ 8002a30:	bd80      	pop	{r7, pc}
+ 8002a32:	bf00      	nop
+ 8002a34:	08002951 	.word	0x08002951
 
-08002a14 <QHsm_ctor>:
+08002a38 <QHsm_state>:
+
+    return inState; /* return the status */
+}
+
+/*${QEP::QHsm::state} ......................................................*/
+QStateHandler QHsm_state(QHsm * const me) {
+ 8002a38:	b480      	push	{r7}
+ 8002a3a:	b083      	sub	sp, #12
+ 8002a3c:	af00      	add	r7, sp, #0
+ 8002a3e:	6078      	str	r0, [r7, #4]
+    return Q_STATE_CAST(me->state.fun);
+ 8002a40:	687b      	ldr	r3, [r7, #4]
+ 8002a42:	685b      	ldr	r3, [r3, #4]
+}
+ 8002a44:	4618      	mov	r0, r3
+ 8002a46:	370c      	adds	r7, #12
+ 8002a48:	46bd      	mov	sp, r7
+ 8002a4a:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 8002a4e:	4770      	bx	lr
+
+08002a50 <QHsm_ctor>:
 }
 
 /*${QEP::QHsm::ctor} .......................................................*/
 void QHsm_ctor(QHsm * const me,
     QStateHandler initial)
 {
- 8002a14:	b480      	push	{r7}
- 8002a16:	b083      	sub	sp, #12
- 8002a18:	af00      	add	r7, sp, #0
- 8002a1a:	6078      	str	r0, [r7, #4]
- 8002a1c:	6039      	str	r1, [r7, #0]
+ 8002a50:	b480      	push	{r7}
+ 8002a52:	b083      	sub	sp, #12
+ 8002a54:	af00      	add	r7, sp, #0
+ 8002a56:	6078      	str	r0, [r7, #4]
+ 8002a58:	6039      	str	r1, [r7, #0]
         &QHsm_dispatch_
     #ifdef Q_SPY
         ,&QHsm_getStateHandler_
     #endif
     };
     me->vptr      = &vtable;
- 8002a1e:	687b      	ldr	r3, [r7, #4]
- 8002a20:	4a06      	ldr	r2, [pc, #24]	; (8002a3c <QHsm_ctor+0x28>)
- 8002a22:	601a      	str	r2, [r3, #0]
+ 8002a5a:	687b      	ldr	r3, [r7, #4]
+ 8002a5c:	4a06      	ldr	r2, [pc, #24]	; (8002a78 <QHsm_ctor+0x28>)
+ 8002a5e:	601a      	str	r2, [r3, #0]
     me->state.fun = Q_STATE_CAST(&QHsm_top);
- 8002a24:	687b      	ldr	r3, [r7, #4]
- 8002a26:	4a06      	ldr	r2, [pc, #24]	; (8002a40 <QHsm_ctor+0x2c>)
- 8002a28:	605a      	str	r2, [r3, #4]
+ 8002a60:	687b      	ldr	r3, [r7, #4]
+ 8002a62:	4a06      	ldr	r2, [pc, #24]	; (8002a7c <QHsm_ctor+0x2c>)
+ 8002a64:	605a      	str	r2, [r3, #4]
     me->temp.fun  = initial;
- 8002a2a:	687b      	ldr	r3, [r7, #4]
- 8002a2c:	683a      	ldr	r2, [r7, #0]
- 8002a2e:	609a      	str	r2, [r3, #8]
+ 8002a66:	687b      	ldr	r3, [r7, #4]
+ 8002a68:	683a      	ldr	r2, [r7, #0]
+ 8002a6a:	609a      	str	r2, [r3, #8]
 }
- 8002a30:	bf00      	nop
- 8002a32:	370c      	adds	r7, #12
- 8002a34:	46bd      	mov	sp, r7
- 8002a36:	f85d 7b04 	ldr.w	r7, [sp], #4
- 8002a3a:	4770      	bx	lr
- 8002a3c:	08003034 	.word	0x08003034
- 8002a40:	08002a45 	.word	0x08002a45
+ 8002a6c:	bf00      	nop
+ 8002a6e:	370c      	adds	r7, #12
+ 8002a70:	46bd      	mov	sp, r7
+ 8002a72:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 8002a76:	4770      	bx	lr
+ 8002a78:	08003070 	.word	0x08003070
+ 8002a7c:	08002a81 	.word	0x08002a81
 
-08002a44 <QHsm_top>:
+08002a80 <QHsm_top>:
 
 /*${QEP::QHsm::top} ........................................................*/
 QState QHsm_top(QHsm const * const me,
     QEvt const * const e)
 {
- 8002a44:	b480      	push	{r7}
- 8002a46:	b083      	sub	sp, #12
- 8002a48:	af00      	add	r7, sp, #0
- 8002a4a:	6078      	str	r0, [r7, #4]
- 8002a4c:	6039      	str	r1, [r7, #0]
+ 8002a80:	b480      	push	{r7}
+ 8002a82:	b083      	sub	sp, #12
+ 8002a84:	af00      	add	r7, sp, #0
+ 8002a86:	6078      	str	r0, [r7, #4]
+ 8002a88:	6039      	str	r1, [r7, #0]
     Q_UNUSED_PAR(me);
     Q_UNUSED_PAR(e);
     return Q_RET_IGNORED; /* the top state ignores all events */
- 8002a4e:	2304      	movs	r3, #4
+ 8002a8a:	2304      	movs	r3, #4
 }
- 8002a50:	4618      	mov	r0, r3
- 8002a52:	370c      	adds	r7, #12
- 8002a54:	46bd      	mov	sp, r7
- 8002a56:	f85d 7b04 	ldr.w	r7, [sp], #4
- 8002a5a:	4770      	bx	lr
+ 8002a8c:	4618      	mov	r0, r3
+ 8002a8e:	370c      	adds	r7, #12
+ 8002a90:	46bd      	mov	sp, r7
+ 8002a92:	f85d 7b04 	ldr.w	r7, [sp], #4
+ 8002a96:	4770      	bx	lr
 
-08002a5c <QHsm_init_>:
+08002a98 <QHsm_init_>:
 
 /*${QEP::QHsm::init_} ......................................................*/
 void QHsm_init_(QHsm * const me,
     void const * const e,
     uint_fast8_t const qs_id)
 {
- 8002a5c:	b580      	push	{r7, lr}
- 8002a5e:	b08e      	sub	sp, #56	; 0x38
- 8002a60:	af00      	add	r7, sp, #0
- 8002a62:	60f8      	str	r0, [r7, #12]
- 8002a64:	60b9      	str	r1, [r7, #8]
- 8002a66:	607a      	str	r2, [r7, #4]
+ 8002a98:	b580      	push	{r7, lr}
+ 8002a9a:	b08e      	sub	sp, #56	; 0x38
+ 8002a9c:	af00      	add	r7, sp, #0
+ 8002a9e:	60f8      	str	r0, [r7, #12]
+ 8002aa0:	60b9      	str	r1, [r7, #8]
+ 8002aa2:	607a      	str	r2, [r7, #4]
     #ifndef Q_SPY
     (void)qs_id; /* unused parameter */
     #endif
 
     QStateHandler t = me->state.fun;
- 8002a68:	68fb      	ldr	r3, [r7, #12]
- 8002a6a:	685b      	ldr	r3, [r3, #4]
- 8002a6c:	637b      	str	r3, [r7, #52]	; 0x34
+ 8002aa4:	68fb      	ldr	r3, [r7, #12]
+ 8002aa6:	685b      	ldr	r3, [r3, #4]
+ 8002aa8:	637b      	str	r3, [r7, #52]	; 0x34
 
     /*! @pre the virtual pointer must be initialized, the top-most initial
     * transition must be initialized, and the initial transition must not
     * be taken yet.
     */
     Q_REQUIRE_ID(200, (me->vptr != (struct QHsmVtable *)0)
- 8002a6e:	68fb      	ldr	r3, [r7, #12]
- 8002a70:	681b      	ldr	r3, [r3, #0]
- 8002a72:	2b00      	cmp	r3, #0
- 8002a74:	d007      	beq.n	8002a86 <QHsm_init_+0x2a>
- 8002a76:	68fb      	ldr	r3, [r7, #12]
- 8002a78:	689b      	ldr	r3, [r3, #8]
- 8002a7a:	2b00      	cmp	r3, #0
- 8002a7c:	d003      	beq.n	8002a86 <QHsm_init_+0x2a>
- 8002a7e:	6b7b      	ldr	r3, [r7, #52]	; 0x34
- 8002a80:	4a33      	ldr	r2, [pc, #204]	; (8002b50 <QHsm_init_+0xf4>)
- 8002a82:	4293      	cmp	r3, r2
- 8002a84:	d003      	beq.n	8002a8e <QHsm_init_+0x32>
- 8002a86:	21c8      	movs	r1, #200	; 0xc8
- 8002a88:	4832      	ldr	r0, [pc, #200]	; (8002b54 <QHsm_init_+0xf8>)
- 8002a8a:	f7fe f94b 	bl	8000d24 <Q_onAssert>
+ 8002aaa:	68fb      	ldr	r3, [r7, #12]
+ 8002aac:	681b      	ldr	r3, [r3, #0]
+ 8002aae:	2b00      	cmp	r3, #0
+ 8002ab0:	d007      	beq.n	8002ac2 <QHsm_init_+0x2a>
+ 8002ab2:	68fb      	ldr	r3, [r7, #12]
+ 8002ab4:	689b      	ldr	r3, [r3, #8]
+ 8002ab6:	2b00      	cmp	r3, #0
+ 8002ab8:	d003      	beq.n	8002ac2 <QHsm_init_+0x2a>
+ 8002aba:	6b7b      	ldr	r3, [r7, #52]	; 0x34
+ 8002abc:	4a33      	ldr	r2, [pc, #204]	; (8002b8c <QHsm_init_+0xf4>)
+ 8002abe:	4293      	cmp	r3, r2
+ 8002ac0:	d003      	beq.n	8002aca <QHsm_init_+0x32>
+ 8002ac2:	21c8      	movs	r1, #200	; 0xc8
+ 8002ac4:	4832      	ldr	r0, [pc, #200]	; (8002b90 <QHsm_init_+0xf8>)
+ 8002ac6:	f7fe f92d 	bl	8000d24 <Q_onAssert>
                       && (me->temp.fun != Q_STATE_CAST(0))
                       && (t == Q_STATE_CAST(&QHsm_top)));
 
     /* execute the top-most initial tran. */
     QState r = (*me->temp.fun)(me, Q_EVT_CAST(QEvt));
- 8002a8e:	68fb      	ldr	r3, [r7, #12]
- 8002a90:	689b      	ldr	r3, [r3, #8]
- 8002a92:	68b9      	ldr	r1, [r7, #8]
- 8002a94:	68f8      	ldr	r0, [r7, #12]
- 8002a96:	4798      	blx	r3
- 8002a98:	4603      	mov	r3, r0
- 8002a9a:	f887 302f 	strb.w	r3, [r7, #47]	; 0x2f
+ 8002aca:	68fb      	ldr	r3, [r7, #12]
+ 8002acc:	689b      	ldr	r3, [r3, #8]
+ 8002ace:	68b9      	ldr	r1, [r7, #8]
+ 8002ad0:	68f8      	ldr	r0, [r7, #12]
+ 8002ad2:	4798      	blx	r3
+ 8002ad4:	4603      	mov	r3, r0
+ 8002ad6:	f887 302f 	strb.w	r3, [r7, #47]	; 0x2f
 
     /* the top-most initial transition must be taken */
     Q_ASSERT_ID(210, r == Q_RET_TRAN);
- 8002a9e:	f897 302f 	ldrb.w	r3, [r7, #47]	; 0x2f
- 8002aa2:	2b08      	cmp	r3, #8
- 8002aa4:	d003      	beq.n	8002aae <QHsm_init_+0x52>
- 8002aa6:	21d2      	movs	r1, #210	; 0xd2
- 8002aa8:	482a      	ldr	r0, [pc, #168]	; (8002b54 <QHsm_init_+0xf8>)
- 8002aaa:	f7fe f93b 	bl	8000d24 <Q_onAssert>
+ 8002ada:	f897 302f 	ldrb.w	r3, [r7, #47]	; 0x2f
+ 8002ade:	2b08      	cmp	r3, #8
+ 8002ae0:	d003      	beq.n	8002aea <QHsm_init_+0x52>
+ 8002ae2:	21d2      	movs	r1, #210	; 0xd2
+ 8002ae4:	482a      	ldr	r0, [pc, #168]	; (8002b90 <QHsm_init_+0xf8>)
+ 8002ae6:	f7fe f91d 	bl	8000d24 <Q_onAssert>
     QS_END_PRE_()
 
     /* drill down into the state hierarchy with initial transitions... */
     do {
         QStateHandler path[QHSM_MAX_NEST_DEPTH_]; /* tran entry path array */
         int_fast8_t ip = 0; /* tran entry path index */
- 8002aae:	2300      	movs	r3, #0
- 8002ab0:	633b      	str	r3, [r7, #48]	; 0x30
+ 8002aea:	2300      	movs	r3, #0
+ 8002aec:	633b      	str	r3, [r7, #48]	; 0x30
 
         path[0] = me->temp.fun;
- 8002ab2:	68fb      	ldr	r3, [r7, #12]
- 8002ab4:	689b      	ldr	r3, [r3, #8]
- 8002ab6:	617b      	str	r3, [r7, #20]
+ 8002aee:	68fb      	ldr	r3, [r7, #12]
+ 8002af0:	689b      	ldr	r3, [r3, #8]
+ 8002af2:	617b      	str	r3, [r7, #20]
         (void)QEP_TRIG_(me->temp.fun, QEP_EMPTY_SIG_);
- 8002ab8:	68fb      	ldr	r3, [r7, #12]
- 8002aba:	689b      	ldr	r3, [r3, #8]
- 8002abc:	4926      	ldr	r1, [pc, #152]	; (8002b58 <QHsm_init_+0xfc>)
- 8002abe:	68f8      	ldr	r0, [r7, #12]
- 8002ac0:	4798      	blx	r3
+ 8002af4:	68fb      	ldr	r3, [r7, #12]
+ 8002af6:	689b      	ldr	r3, [r3, #8]
+ 8002af8:	4926      	ldr	r1, [pc, #152]	; (8002b94 <QHsm_init_+0xfc>)
+ 8002afa:	68f8      	ldr	r0, [r7, #12]
+ 8002afc:	4798      	blx	r3
         while (me->temp.fun != t) {
- 8002ac2:	e016      	b.n	8002af2 <QHsm_init_+0x96>
+ 8002afe:	e016      	b.n	8002b2e <QHsm_init_+0x96>
             ++ip;
- 8002ac4:	6b3b      	ldr	r3, [r7, #48]	; 0x30
- 8002ac6:	3301      	adds	r3, #1
- 8002ac8:	633b      	str	r3, [r7, #48]	; 0x30
+ 8002b00:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 8002b02:	3301      	adds	r3, #1
+ 8002b04:	633b      	str	r3, [r7, #48]	; 0x30
             Q_ASSERT_ID(220, ip < QHSM_MAX_NEST_DEPTH_);
- 8002aca:	6b3b      	ldr	r3, [r7, #48]	; 0x30
- 8002acc:	2b05      	cmp	r3, #5
- 8002ace:	dd03      	ble.n	8002ad8 <QHsm_init_+0x7c>
- 8002ad0:	21dc      	movs	r1, #220	; 0xdc
- 8002ad2:	4820      	ldr	r0, [pc, #128]	; (8002b54 <QHsm_init_+0xf8>)
- 8002ad4:	f7fe f926 	bl	8000d24 <Q_onAssert>
+ 8002b06:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 8002b08:	2b05      	cmp	r3, #5
+ 8002b0a:	dd03      	ble.n	8002b14 <QHsm_init_+0x7c>
+ 8002b0c:	21dc      	movs	r1, #220	; 0xdc
+ 8002b0e:	4820      	ldr	r0, [pc, #128]	; (8002b90 <QHsm_init_+0xf8>)
+ 8002b10:	f7fe f908 	bl	8000d24 <Q_onAssert>
             path[ip] = me->temp.fun;
- 8002ad8:	68fb      	ldr	r3, [r7, #12]
- 8002ada:	689a      	ldr	r2, [r3, #8]
- 8002adc:	6b3b      	ldr	r3, [r7, #48]	; 0x30
- 8002ade:	009b      	lsls	r3, r3, #2
- 8002ae0:	3338      	adds	r3, #56	; 0x38
- 8002ae2:	443b      	add	r3, r7
- 8002ae4:	f843 2c24 	str.w	r2, [r3, #-36]
+ 8002b14:	68fb      	ldr	r3, [r7, #12]
+ 8002b16:	689a      	ldr	r2, [r3, #8]
+ 8002b18:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 8002b1a:	009b      	lsls	r3, r3, #2
+ 8002b1c:	3338      	adds	r3, #56	; 0x38
+ 8002b1e:	443b      	add	r3, r7
+ 8002b20:	f843 2c24 	str.w	r2, [r3, #-36]
             (void)QEP_TRIG_(me->temp.fun, QEP_EMPTY_SIG_);
- 8002ae8:	68fb      	ldr	r3, [r7, #12]
- 8002aea:	689b      	ldr	r3, [r3, #8]
- 8002aec:	491a      	ldr	r1, [pc, #104]	; (8002b58 <QHsm_init_+0xfc>)
- 8002aee:	68f8      	ldr	r0, [r7, #12]
- 8002af0:	4798      	blx	r3
+ 8002b24:	68fb      	ldr	r3, [r7, #12]
+ 8002b26:	689b      	ldr	r3, [r3, #8]
+ 8002b28:	491a      	ldr	r1, [pc, #104]	; (8002b94 <QHsm_init_+0xfc>)
+ 8002b2a:	68f8      	ldr	r0, [r7, #12]
+ 8002b2c:	4798      	blx	r3
         while (me->temp.fun != t) {
- 8002af2:	68fb      	ldr	r3, [r7, #12]
- 8002af4:	689b      	ldr	r3, [r3, #8]
- 8002af6:	6b7a      	ldr	r2, [r7, #52]	; 0x34
- 8002af8:	429a      	cmp	r2, r3
- 8002afa:	d1e3      	bne.n	8002ac4 <QHsm_init_+0x68>
+ 8002b2e:	68fb      	ldr	r3, [r7, #12]
+ 8002b30:	689b      	ldr	r3, [r3, #8]
+ 8002b32:	6b7a      	ldr	r2, [r7, #52]	; 0x34
+ 8002b34:	429a      	cmp	r2, r3
+ 8002b36:	d1e3      	bne.n	8002b00 <QHsm_init_+0x68>
         }
         me->temp.fun = path[0];
- 8002afc:	697a      	ldr	r2, [r7, #20]
- 8002afe:	68fb      	ldr	r3, [r7, #12]
- 8002b00:	609a      	str	r2, [r3, #8]
+ 8002b38:	697a      	ldr	r2, [r7, #20]
+ 8002b3a:	68fb      	ldr	r3, [r7, #12]
+ 8002b3c:	609a      	str	r2, [r3, #8]
 
         /* nested initial transition, drill into the target hierarchy... */
         do {
             QEP_ENTER_(path[ip], qs_id); /* enter path[ip] */
- 8002b02:	6b3b      	ldr	r3, [r7, #48]	; 0x30
- 8002b04:	009b      	lsls	r3, r3, #2
- 8002b06:	3338      	adds	r3, #56	; 0x38
- 8002b08:	443b      	add	r3, r7
- 8002b0a:	f853 3c24 	ldr.w	r3, [r3, #-36]
- 8002b0e:	4913      	ldr	r1, [pc, #76]	; (8002b5c <QHsm_init_+0x100>)
- 8002b10:	68f8      	ldr	r0, [r7, #12]
- 8002b12:	4798      	blx	r3
+ 8002b3e:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 8002b40:	009b      	lsls	r3, r3, #2
+ 8002b42:	3338      	adds	r3, #56	; 0x38
+ 8002b44:	443b      	add	r3, r7
+ 8002b46:	f853 3c24 	ldr.w	r3, [r3, #-36]
+ 8002b4a:	4913      	ldr	r1, [pc, #76]	; (8002b98 <QHsm_init_+0x100>)
+ 8002b4c:	68f8      	ldr	r0, [r7, #12]
+ 8002b4e:	4798      	blx	r3
             --ip;
- 8002b14:	6b3b      	ldr	r3, [r7, #48]	; 0x30
- 8002b16:	3b01      	subs	r3, #1
- 8002b18:	633b      	str	r3, [r7, #48]	; 0x30
+ 8002b50:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 8002b52:	3b01      	subs	r3, #1
+ 8002b54:	633b      	str	r3, [r7, #48]	; 0x30
         } while (ip >= 0);
- 8002b1a:	6b3b      	ldr	r3, [r7, #48]	; 0x30
- 8002b1c:	2b00      	cmp	r3, #0
- 8002b1e:	daf0      	bge.n	8002b02 <QHsm_init_+0xa6>
+ 8002b56:	6b3b      	ldr	r3, [r7, #48]	; 0x30
+ 8002b58:	2b00      	cmp	r3, #0
+ 8002b5a:	daf0      	bge.n	8002b3e <QHsm_init_+0xa6>
 
         t = path[0]; /* current state becomes the new source */
- 8002b20:	697b      	ldr	r3, [r7, #20]
- 8002b22:	637b      	str	r3, [r7, #52]	; 0x34
+ 8002b5c:	697b      	ldr	r3, [r7, #20]
+ 8002b5e:	637b      	str	r3, [r7, #52]	; 0x34
 
         r = QEP_TRIG_(t, Q_INIT_SIG); /* execute initial transition */
- 8002b24:	6b7b      	ldr	r3, [r7, #52]	; 0x34
- 8002b26:	490e      	ldr	r1, [pc, #56]	; (8002b60 <QHsm_init_+0x104>)
- 8002b28:	68f8      	ldr	r0, [r7, #12]
- 8002b2a:	4798      	blx	r3
- 8002b2c:	4603      	mov	r3, r0
- 8002b2e:	f887 302f 	strb.w	r3, [r7, #47]	; 0x2f
+ 8002b60:	6b7b      	ldr	r3, [r7, #52]	; 0x34
+ 8002b62:	490e      	ldr	r1, [pc, #56]	; (8002b9c <QHsm_init_+0x104>)
+ 8002b64:	68f8      	ldr	r0, [r7, #12]
+ 8002b66:	4798      	blx	r3
+ 8002b68:	4603      	mov	r3, r0
+ 8002b6a:	f887 302f 	strb.w	r3, [r7, #47]	; 0x2f
                 QS_FUN_PRE_(me->temp.fun); /* target of the initial tran. */
             QS_END_PRE_()
         }
     #endif /* Q_SPY */
 
     } while (r == Q_RET_TRAN);
- 8002b32:	f897 302f 	ldrb.w	r3, [r7, #47]	; 0x2f
- 8002b36:	2b08      	cmp	r3, #8
- 8002b38:	d0b9      	beq.n	8002aae <QHsm_init_+0x52>
+ 8002b6e:	f897 302f 	ldrb.w	r3, [r7, #47]	; 0x2f
+ 8002b72:	2b08      	cmp	r3, #8
+ 8002b74:	d0b9      	beq.n	8002aea <QHsm_init_+0x52>
         QS_TIME_PRE_();    /* time stamp */
         QS_OBJ_PRE_(me);   /* this state machine object */
         QS_FUN_PRE_(t);    /* the new active state */
     QS_END_PRE_()
 
     me->state.fun = t; /* change the current active state */
- 8002b3a:	68fb      	ldr	r3, [r7, #12]
- 8002b3c:	6b7a      	ldr	r2, [r7, #52]	; 0x34
- 8002b3e:	605a      	str	r2, [r3, #4]
+ 8002b76:	68fb      	ldr	r3, [r7, #12]
+ 8002b78:	6b7a      	ldr	r2, [r7, #52]	; 0x34
+ 8002b7a:	605a      	str	r2, [r3, #4]
     me->temp.fun  = t; /* mark the configuration as stable */
- 8002b40:	68fb      	ldr	r3, [r7, #12]
- 8002b42:	6b7a      	ldr	r2, [r7, #52]	; 0x34
- 8002b44:	609a      	str	r2, [r3, #8]
+ 8002b7c:	68fb      	ldr	r3, [r7, #12]
+ 8002b7e:	6b7a      	ldr	r2, [r7, #52]	; 0x34
+ 8002b80:	609a      	str	r2, [r3, #8]
 }
- 8002b46:	bf00      	nop
- 8002b48:	3738      	adds	r7, #56	; 0x38
- 8002b4a:	46bd      	mov	sp, r7
- 8002b4c:	bd80      	pop	{r7, pc}
- 8002b4e:	bf00      	nop
- 8002b50:	08002a45 	.word	0x08002a45
- 8002b54:	0800301c 	.word	0x0800301c
- 8002b58:	08003024 	.word	0x08003024
- 8002b5c:	08003028 	.word	0x08003028
- 8002b60:	08003030 	.word	0x08003030
+ 8002b82:	bf00      	nop
+ 8002b84:	3738      	adds	r7, #56	; 0x38
+ 8002b86:	46bd      	mov	sp, r7
+ 8002b88:	bd80      	pop	{r7, pc}
+ 8002b8a:	bf00      	nop
+ 8002b8c:	08002a81 	.word	0x08002a81
+ 8002b90:	08003058 	.word	0x08003058
+ 8002b94:	08003060 	.word	0x08003060
+ 8002b98:	08003064 	.word	0x08003064
+ 8002b9c:	0800306c 	.word	0x0800306c
 
-08002b64 <QHsm_dispatch_>:
+08002ba0 <QHsm_dispatch_>:
 
 /*${QEP::QHsm::dispatch_} ..................................................*/
 void QHsm_dispatch_(QHsm * const me,
     QEvt const * const e,
     uint_fast8_t const qs_id)
 {
- 8002b64:	b580      	push	{r7, lr}
- 8002b66:	b08e      	sub	sp, #56	; 0x38
- 8002b68:	af00      	add	r7, sp, #0
- 8002b6a:	60f8      	str	r0, [r7, #12]
- 8002b6c:	60b9      	str	r1, [r7, #8]
- 8002b6e:	607a      	str	r2, [r7, #4]
+ 8002ba0:	b580      	push	{r7, lr}
+ 8002ba2:	b08e      	sub	sp, #56	; 0x38
+ 8002ba4:	af00      	add	r7, sp, #0
+ 8002ba6:	60f8      	str	r0, [r7, #12]
+ 8002ba8:	60b9      	str	r1, [r7, #8]
+ 8002baa:	607a      	str	r2, [r7, #4]
     Q_UNUSED_PAR(qs_id); /* unused when Q_SPY undefined */
 
     QStateHandler t = me->state.fun;
- 8002b70:	68fb      	ldr	r3, [r7, #12]
- 8002b72:	685b      	ldr	r3, [r3, #4]
- 8002b74:	637b      	str	r3, [r7, #52]	; 0x34
+ 8002bac:	68fb      	ldr	r3, [r7, #12]
+ 8002bae:	685b      	ldr	r3, [r3, #4]
+ 8002bb0:	637b      	str	r3, [r7, #52]	; 0x34
     QS_CRIT_STAT_
 
     /*! @pre the current state must be initialized and
     * the state configuration must be stable
     */
     Q_REQUIRE_ID(400, (t != Q_STATE_CAST(0))
- 8002b76:	6b7b      	ldr	r3, [r7, #52]	; 0x34
- 8002b78:	2b00      	cmp	r3, #0
- 8002b7a:	d004      	beq.n	8002b86 <QHsm_dispatch_+0x22>
- 8002b7c:	68fb      	ldr	r3, [r7, #12]
- 8002b7e:	689b      	ldr	r3, [r3, #8]
- 8002b80:	6b7a      	ldr	r2, [r7, #52]	; 0x34
- 8002b82:	429a      	cmp	r2, r3
- 8002b84:	d004      	beq.n	8002b90 <QHsm_dispatch_+0x2c>
- 8002b86:	f44f 71c8 	mov.w	r1, #400	; 0x190
- 8002b8a:	4852      	ldr	r0, [pc, #328]	; (8002cd4 <QHsm_dispatch_+0x170>)
- 8002b8c:	f7fe f8ca 	bl	8000d24 <Q_onAssert>
+ 8002bb2:	6b7b      	ldr	r3, [r7, #52]	; 0x34
+ 8002bb4:	2b00      	cmp	r3, #0
+ 8002bb6:	d004      	beq.n	8002bc2 <QHsm_dispatch_+0x22>
+ 8002bb8:	68fb      	ldr	r3, [r7, #12]
+ 8002bba:	689b      	ldr	r3, [r3, #8]
+ 8002bbc:	6b7a      	ldr	r2, [r7, #52]	; 0x34
+ 8002bbe:	429a      	cmp	r2, r3
+ 8002bc0:	d004      	beq.n	8002bcc <QHsm_dispatch_+0x2c>
+ 8002bc2:	f44f 71c8 	mov.w	r1, #400	; 0x190
+ 8002bc6:	4852      	ldr	r0, [pc, #328]	; (8002d10 <QHsm_dispatch_+0x170>)
+ 8002bc8:	f7fe f8ac 	bl	8000d24 <Q_onAssert>
 
     QStateHandler s;
     QState r;
     /* process the event hierarchically... */
     do {
         s = me->temp.fun;
- 8002b90:	68fb      	ldr	r3, [r7, #12]
- 8002b92:	689b      	ldr	r3, [r3, #8]
- 8002b94:	62bb      	str	r3, [r7, #40]	; 0x28
+ 8002bcc:	68fb      	ldr	r3, [r7, #12]
+ 8002bce:	689b      	ldr	r3, [r3, #8]
+ 8002bd0:	62bb      	str	r3, [r7, #40]	; 0x28
         r = (*s)(me, e); /* invoke state handler s */
- 8002b96:	6abb      	ldr	r3, [r7, #40]	; 0x28
- 8002b98:	68b9      	ldr	r1, [r7, #8]
- 8002b9a:	68f8      	ldr	r0, [r7, #12]
- 8002b9c:	4798      	blx	r3
- 8002b9e:	4603      	mov	r3, r0
- 8002ba0:	f887 3033 	strb.w	r3, [r7, #51]	; 0x33
+ 8002bd2:	6abb      	ldr	r3, [r7, #40]	; 0x28
+ 8002bd4:	68b9      	ldr	r1, [r7, #8]
+ 8002bd6:	68f8      	ldr	r0, [r7, #12]
+ 8002bd8:	4798      	blx	r3
+ 8002bda:	4603      	mov	r3, r0
+ 8002bdc:	f887 3033 	strb.w	r3, [r7, #51]	; 0x33
 
         if (r == Q_RET_UNHANDLED) { /* unhandled due to a guard? */
- 8002ba4:	f897 3033 	ldrb.w	r3, [r7, #51]	; 0x33
- 8002ba8:	2b02      	cmp	r3, #2
- 8002baa:	d106      	bne.n	8002bba <QHsm_dispatch_+0x56>
+ 8002be0:	f897 3033 	ldrb.w	r3, [r7, #51]	; 0x33
+ 8002be4:	2b02      	cmp	r3, #2
+ 8002be6:	d106      	bne.n	8002bf6 <QHsm_dispatch_+0x56>
                 QS_SIG_PRE_(e->sig); /* the signal of the event */
                 QS_OBJ_PRE_(me);     /* this state machine object */
                 QS_FUN_PRE_(s);      /* the current state */
             QS_END_PRE_()
 
             r = QEP_TRIG_(s, QEP_EMPTY_SIG_); /* find superstate of s */
- 8002bac:	6abb      	ldr	r3, [r7, #40]	; 0x28
- 8002bae:	494a      	ldr	r1, [pc, #296]	; (8002cd8 <QHsm_dispatch_+0x174>)
- 8002bb0:	68f8      	ldr	r0, [r7, #12]
- 8002bb2:	4798      	blx	r3
- 8002bb4:	4603      	mov	r3, r0
- 8002bb6:	f887 3033 	strb.w	r3, [r7, #51]	; 0x33
+ 8002be8:	6abb      	ldr	r3, [r7, #40]	; 0x28
+ 8002bea:	494a      	ldr	r1, [pc, #296]	; (8002d14 <QHsm_dispatch_+0x174>)
+ 8002bec:	68f8      	ldr	r0, [r7, #12]
+ 8002bee:	4798      	blx	r3
+ 8002bf0:	4603      	mov	r3, r0
+ 8002bf2:	f887 3033 	strb.w	r3, [r7, #51]	; 0x33
         }
     } while (r == Q_RET_SUPER);
- 8002bba:	f897 3033 	ldrb.w	r3, [r7, #51]	; 0x33
- 8002bbe:	2b00      	cmp	r3, #0
- 8002bc0:	d0e6      	beq.n	8002b90 <QHsm_dispatch_+0x2c>
+ 8002bf6:	f897 3033 	ldrb.w	r3, [r7, #51]	; 0x33
+ 8002bfa:	2b00      	cmp	r3, #0
+ 8002bfc:	d0e6      	beq.n	8002bcc <QHsm_dispatch_+0x2c>
 
     /* regular transition taken? */
     /*! @tr{RQP120E} */
     if (r >= Q_RET_TRAN) {
- 8002bc2:	f897 3033 	ldrb.w	r3, [r7, #51]	; 0x33
- 8002bc6:	2b07      	cmp	r3, #7
- 8002bc8:	d97a      	bls.n	8002cc0 <QHsm_dispatch_+0x15c>
+ 8002bfe:	f897 3033 	ldrb.w	r3, [r7, #51]	; 0x33
+ 8002c02:	2b07      	cmp	r3, #7
+ 8002c04:	d97a      	bls.n	8002cfc <QHsm_dispatch_+0x15c>
         QStateHandler path[QHSM_MAX_NEST_DEPTH_];
 
         path[0] = me->temp.fun; /* save the target of the transition */
- 8002bca:	68fb      	ldr	r3, [r7, #12]
- 8002bcc:	689b      	ldr	r3, [r3, #8]
- 8002bce:	613b      	str	r3, [r7, #16]
+ 8002c06:	68fb      	ldr	r3, [r7, #12]
+ 8002c08:	689b      	ldr	r3, [r3, #8]
+ 8002c0a:	613b      	str	r3, [r7, #16]
         path[1] = t;
- 8002bd0:	6b7b      	ldr	r3, [r7, #52]	; 0x34
- 8002bd2:	617b      	str	r3, [r7, #20]
+ 8002c0c:	6b7b      	ldr	r3, [r7, #52]	; 0x34
+ 8002c0e:	617b      	str	r3, [r7, #20]
         path[2] = s;
- 8002bd4:	6abb      	ldr	r3, [r7, #40]	; 0x28
- 8002bd6:	61bb      	str	r3, [r7, #24]
+ 8002c10:	6abb      	ldr	r3, [r7, #40]	; 0x28
+ 8002c12:	61bb      	str	r3, [r7, #24]
 
         /* exit current state to transition source s... */
         /*! @tr{RQP120C} */
         for (; t != s; t = me->temp.fun) {
- 8002bd8:	e00d      	b.n	8002bf6 <QHsm_dispatch_+0x92>
+ 8002c14:	e00d      	b.n	8002c32 <QHsm_dispatch_+0x92>
             if (QEP_TRIG_(t, Q_EXIT_SIG) == Q_RET_HANDLED) {
- 8002bda:	6b7b      	ldr	r3, [r7, #52]	; 0x34
- 8002bdc:	493f      	ldr	r1, [pc, #252]	; (8002cdc <QHsm_dispatch_+0x178>)
- 8002bde:	68f8      	ldr	r0, [r7, #12]
- 8002be0:	4798      	blx	r3
- 8002be2:	4603      	mov	r3, r0
- 8002be4:	2b03      	cmp	r3, #3
- 8002be6:	d103      	bne.n	8002bf0 <QHsm_dispatch_+0x8c>
+ 8002c16:	6b7b      	ldr	r3, [r7, #52]	; 0x34
+ 8002c18:	493f      	ldr	r1, [pc, #252]	; (8002d18 <QHsm_dispatch_+0x178>)
+ 8002c1a:	68f8      	ldr	r0, [r7, #12]
+ 8002c1c:	4798      	blx	r3
+ 8002c1e:	4603      	mov	r3, r0
+ 8002c20:	2b03      	cmp	r3, #3
+ 8002c22:	d103      	bne.n	8002c2c <QHsm_dispatch_+0x8c>
                     QS_OBJ_PRE_(me);  /* this state machine object */
                     QS_FUN_PRE_(t);   /* the exited state */
                 QS_END_PRE_()
 
                 /* find superstate of t */
                 (void)QEP_TRIG_(t, QEP_EMPTY_SIG_);
- 8002be8:	6b7b      	ldr	r3, [r7, #52]	; 0x34
- 8002bea:	493b      	ldr	r1, [pc, #236]	; (8002cd8 <QHsm_dispatch_+0x174>)
- 8002bec:	68f8      	ldr	r0, [r7, #12]
- 8002bee:	4798      	blx	r3
+ 8002c24:	6b7b      	ldr	r3, [r7, #52]	; 0x34
+ 8002c26:	493b      	ldr	r1, [pc, #236]	; (8002d14 <QHsm_dispatch_+0x174>)
+ 8002c28:	68f8      	ldr	r0, [r7, #12]
+ 8002c2a:	4798      	blx	r3
         for (; t != s; t = me->temp.fun) {
- 8002bf0:	68fb      	ldr	r3, [r7, #12]
- 8002bf2:	689b      	ldr	r3, [r3, #8]
- 8002bf4:	637b      	str	r3, [r7, #52]	; 0x34
- 8002bf6:	6b7a      	ldr	r2, [r7, #52]	; 0x34
- 8002bf8:	6abb      	ldr	r3, [r7, #40]	; 0x28
- 8002bfa:	429a      	cmp	r2, r3
- 8002bfc:	d1ed      	bne.n	8002bda <QHsm_dispatch_+0x76>
+ 8002c2c:	68fb      	ldr	r3, [r7, #12]
+ 8002c2e:	689b      	ldr	r3, [r3, #8]
+ 8002c30:	637b      	str	r3, [r7, #52]	; 0x34
+ 8002c32:	6b7a      	ldr	r2, [r7, #52]	; 0x34
+ 8002c34:	6abb      	ldr	r3, [r7, #40]	; 0x28
+ 8002c36:	429a      	cmp	r2, r3
+ 8002c38:	d1ed      	bne.n	8002c16 <QHsm_dispatch_+0x76>
             }
         }
 
         int_fast8_t ip = QHsm_tran_(me, path, qs_id); /* the HSM transition */
- 8002bfe:	f107 0310 	add.w	r3, r7, #16
- 8002c02:	687a      	ldr	r2, [r7, #4]
- 8002c04:	4619      	mov	r1, r3
- 8002c06:	68f8      	ldr	r0, [r7, #12]
- 8002c08:	f000 f86e 	bl	8002ce8 <QHsm_tran_>
- 8002c0c:	62f8      	str	r0, [r7, #44]	; 0x2c
+ 8002c3a:	f107 0310 	add.w	r3, r7, #16
+ 8002c3e:	687a      	ldr	r2, [r7, #4]
+ 8002c40:	4619      	mov	r1, r3
+ 8002c42:	68f8      	ldr	r0, [r7, #12]
+ 8002c44:	f000 f86e 	bl	8002d24 <QHsm_tran_>
+ 8002c48:	62f8      	str	r0, [r7, #44]	; 0x2c
         }
     #endif /* Q_SPY */
 
         /* execute state entry actions in the desired order... */
         /*! @tr{RQP120B} */
         for (; ip >= 0; --ip) {
- 8002c0e:	e00b      	b.n	8002c28 <QHsm_dispatch_+0xc4>
+ 8002c4a:	e00b      	b.n	8002c64 <QHsm_dispatch_+0xc4>
             QEP_ENTER_(path[ip], qs_id);  /* enter path[ip] */
- 8002c10:	6afb      	ldr	r3, [r7, #44]	; 0x2c
- 8002c12:	009b      	lsls	r3, r3, #2
- 8002c14:	3338      	adds	r3, #56	; 0x38
- 8002c16:	443b      	add	r3, r7
- 8002c18:	f853 3c28 	ldr.w	r3, [r3, #-40]
- 8002c1c:	4930      	ldr	r1, [pc, #192]	; (8002ce0 <QHsm_dispatch_+0x17c>)
- 8002c1e:	68f8      	ldr	r0, [r7, #12]
- 8002c20:	4798      	blx	r3
+ 8002c4c:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8002c4e:	009b      	lsls	r3, r3, #2
+ 8002c50:	3338      	adds	r3, #56	; 0x38
+ 8002c52:	443b      	add	r3, r7
+ 8002c54:	f853 3c28 	ldr.w	r3, [r3, #-40]
+ 8002c58:	4930      	ldr	r1, [pc, #192]	; (8002d1c <QHsm_dispatch_+0x17c>)
+ 8002c5a:	68f8      	ldr	r0, [r7, #12]
+ 8002c5c:	4798      	blx	r3
         for (; ip >= 0; --ip) {
- 8002c22:	6afb      	ldr	r3, [r7, #44]	; 0x2c
- 8002c24:	3b01      	subs	r3, #1
- 8002c26:	62fb      	str	r3, [r7, #44]	; 0x2c
- 8002c28:	6afb      	ldr	r3, [r7, #44]	; 0x2c
- 8002c2a:	2b00      	cmp	r3, #0
- 8002c2c:	daf0      	bge.n	8002c10 <QHsm_dispatch_+0xac>
+ 8002c5e:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8002c60:	3b01      	subs	r3, #1
+ 8002c62:	62fb      	str	r3, [r7, #44]	; 0x2c
+ 8002c64:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8002c66:	2b00      	cmp	r3, #0
+ 8002c68:	daf0      	bge.n	8002c4c <QHsm_dispatch_+0xac>
         }
 
         t = path[0];      /* stick the target into register */
- 8002c2e:	693b      	ldr	r3, [r7, #16]
- 8002c30:	637b      	str	r3, [r7, #52]	; 0x34
+ 8002c6a:	693b      	ldr	r3, [r7, #16]
+ 8002c6c:	637b      	str	r3, [r7, #52]	; 0x34
         me->temp.fun = t; /* update the next state */
- 8002c32:	68fb      	ldr	r3, [r7, #12]
- 8002c34:	6b7a      	ldr	r2, [r7, #52]	; 0x34
- 8002c36:	609a      	str	r2, [r3, #8]
+ 8002c6e:	68fb      	ldr	r3, [r7, #12]
+ 8002c70:	6b7a      	ldr	r2, [r7, #52]	; 0x34
+ 8002c72:	609a      	str	r2, [r3, #8]
 
         /* while nested initial transition... */
         /*! @tr{RQP120I} */
         while (QEP_TRIG_(t, Q_INIT_SIG) == Q_RET_TRAN) {
- 8002c38:	e03b      	b.n	8002cb2 <QHsm_dispatch_+0x14e>
+ 8002c74:	e03b      	b.n	8002cee <QHsm_dispatch_+0x14e>
                 QS_OBJ_PRE_(me);           /* this state machine object */
                 QS_FUN_PRE_(t);            /* the source (pseudo)state */
                 QS_FUN_PRE_(me->temp.fun); /* the target of the transition */
             QS_END_PRE_()
 
             ip = 0;
- 8002c3a:	2300      	movs	r3, #0
- 8002c3c:	62fb      	str	r3, [r7, #44]	; 0x2c
+ 8002c76:	2300      	movs	r3, #0
+ 8002c78:	62fb      	str	r3, [r7, #44]	; 0x2c
             path[0] = me->temp.fun;
- 8002c3e:	68fb      	ldr	r3, [r7, #12]
- 8002c40:	689b      	ldr	r3, [r3, #8]
- 8002c42:	613b      	str	r3, [r7, #16]
+ 8002c7a:	68fb      	ldr	r3, [r7, #12]
+ 8002c7c:	689b      	ldr	r3, [r3, #8]
+ 8002c7e:	613b      	str	r3, [r7, #16]
 
             /* find superstate */
             (void)QEP_TRIG_(me->temp.fun, QEP_EMPTY_SIG_);
- 8002c44:	68fb      	ldr	r3, [r7, #12]
- 8002c46:	689b      	ldr	r3, [r3, #8]
- 8002c48:	4923      	ldr	r1, [pc, #140]	; (8002cd8 <QHsm_dispatch_+0x174>)
- 8002c4a:	68f8      	ldr	r0, [r7, #12]
- 8002c4c:	4798      	blx	r3
+ 8002c80:	68fb      	ldr	r3, [r7, #12]
+ 8002c82:	689b      	ldr	r3, [r3, #8]
+ 8002c84:	4923      	ldr	r1, [pc, #140]	; (8002d14 <QHsm_dispatch_+0x174>)
+ 8002c86:	68f8      	ldr	r0, [r7, #12]
+ 8002c88:	4798      	blx	r3
 
             while (me->temp.fun != t) {
- 8002c4e:	e00f      	b.n	8002c70 <QHsm_dispatch_+0x10c>
+ 8002c8a:	e00f      	b.n	8002cac <QHsm_dispatch_+0x10c>
                 ++ip;
- 8002c50:	6afb      	ldr	r3, [r7, #44]	; 0x2c
- 8002c52:	3301      	adds	r3, #1
- 8002c54:	62fb      	str	r3, [r7, #44]	; 0x2c
+ 8002c8c:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8002c8e:	3301      	adds	r3, #1
+ 8002c90:	62fb      	str	r3, [r7, #44]	; 0x2c
                 path[ip] = me->temp.fun;
- 8002c56:	68fb      	ldr	r3, [r7, #12]
- 8002c58:	689a      	ldr	r2, [r3, #8]
- 8002c5a:	6afb      	ldr	r3, [r7, #44]	; 0x2c
- 8002c5c:	009b      	lsls	r3, r3, #2
- 8002c5e:	3338      	adds	r3, #56	; 0x38
- 8002c60:	443b      	add	r3, r7
- 8002c62:	f843 2c28 	str.w	r2, [r3, #-40]
+ 8002c92:	68fb      	ldr	r3, [r7, #12]
+ 8002c94:	689a      	ldr	r2, [r3, #8]
+ 8002c96:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8002c98:	009b      	lsls	r3, r3, #2
+ 8002c9a:	3338      	adds	r3, #56	; 0x38
+ 8002c9c:	443b      	add	r3, r7
+ 8002c9e:	f843 2c28 	str.w	r2, [r3, #-40]
                 /* find superstate */
                 (void)QEP_TRIG_(me->temp.fun, QEP_EMPTY_SIG_);
- 8002c66:	68fb      	ldr	r3, [r7, #12]
- 8002c68:	689b      	ldr	r3, [r3, #8]
- 8002c6a:	491b      	ldr	r1, [pc, #108]	; (8002cd8 <QHsm_dispatch_+0x174>)
- 8002c6c:	68f8      	ldr	r0, [r7, #12]
- 8002c6e:	4798      	blx	r3
+ 8002ca2:	68fb      	ldr	r3, [r7, #12]
+ 8002ca4:	689b      	ldr	r3, [r3, #8]
+ 8002ca6:	491b      	ldr	r1, [pc, #108]	; (8002d14 <QHsm_dispatch_+0x174>)
+ 8002ca8:	68f8      	ldr	r0, [r7, #12]
+ 8002caa:	4798      	blx	r3
             while (me->temp.fun != t) {
- 8002c70:	68fb      	ldr	r3, [r7, #12]
- 8002c72:	689b      	ldr	r3, [r3, #8]
- 8002c74:	6b7a      	ldr	r2, [r7, #52]	; 0x34
- 8002c76:	429a      	cmp	r2, r3
- 8002c78:	d1ea      	bne.n	8002c50 <QHsm_dispatch_+0xec>
+ 8002cac:	68fb      	ldr	r3, [r7, #12]
+ 8002cae:	689b      	ldr	r3, [r3, #8]
+ 8002cb0:	6b7a      	ldr	r2, [r7, #52]	; 0x34
+ 8002cb2:	429a      	cmp	r2, r3
+ 8002cb4:	d1ea      	bne.n	8002c8c <QHsm_dispatch_+0xec>
             }
             me->temp.fun = path[0];
- 8002c7a:	693a      	ldr	r2, [r7, #16]
- 8002c7c:	68fb      	ldr	r3, [r7, #12]
- 8002c7e:	609a      	str	r2, [r3, #8]
+ 8002cb6:	693a      	ldr	r2, [r7, #16]
+ 8002cb8:	68fb      	ldr	r3, [r7, #12]
+ 8002cba:	609a      	str	r2, [r3, #8]
 
             /* entry path must not overflow */
             Q_ASSERT_ID(410, ip < QHSM_MAX_NEST_DEPTH_);
- 8002c80:	6afb      	ldr	r3, [r7, #44]	; 0x2c
- 8002c82:	2b05      	cmp	r3, #5
- 8002c84:	dd04      	ble.n	8002c90 <QHsm_dispatch_+0x12c>
- 8002c86:	f44f 71cd 	mov.w	r1, #410	; 0x19a
- 8002c8a:	4812      	ldr	r0, [pc, #72]	; (8002cd4 <QHsm_dispatch_+0x170>)
- 8002c8c:	f7fe f84a 	bl	8000d24 <Q_onAssert>
+ 8002cbc:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8002cbe:	2b05      	cmp	r3, #5
+ 8002cc0:	dd04      	ble.n	8002ccc <QHsm_dispatch_+0x12c>
+ 8002cc2:	f44f 71cd 	mov.w	r1, #410	; 0x19a
+ 8002cc6:	4812      	ldr	r0, [pc, #72]	; (8002d10 <QHsm_dispatch_+0x170>)
+ 8002cc8:	f7fe f82c 	bl	8000d24 <Q_onAssert>
 
             /* retrace the entry path in reverse (correct) order... */
             do {
                 QEP_ENTER_(path[ip], qs_id); /* enter path[ip] */
- 8002c90:	6afb      	ldr	r3, [r7, #44]	; 0x2c
- 8002c92:	009b      	lsls	r3, r3, #2
- 8002c94:	3338      	adds	r3, #56	; 0x38
- 8002c96:	443b      	add	r3, r7
- 8002c98:	f853 3c28 	ldr.w	r3, [r3, #-40]
- 8002c9c:	4910      	ldr	r1, [pc, #64]	; (8002ce0 <QHsm_dispatch_+0x17c>)
- 8002c9e:	68f8      	ldr	r0, [r7, #12]
- 8002ca0:	4798      	blx	r3
+ 8002ccc:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8002cce:	009b      	lsls	r3, r3, #2
+ 8002cd0:	3338      	adds	r3, #56	; 0x38
+ 8002cd2:	443b      	add	r3, r7
+ 8002cd4:	f853 3c28 	ldr.w	r3, [r3, #-40]
+ 8002cd8:	4910      	ldr	r1, [pc, #64]	; (8002d1c <QHsm_dispatch_+0x17c>)
+ 8002cda:	68f8      	ldr	r0, [r7, #12]
+ 8002cdc:	4798      	blx	r3
                 --ip;
- 8002ca2:	6afb      	ldr	r3, [r7, #44]	; 0x2c
- 8002ca4:	3b01      	subs	r3, #1
- 8002ca6:	62fb      	str	r3, [r7, #44]	; 0x2c
+ 8002cde:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8002ce0:	3b01      	subs	r3, #1
+ 8002ce2:	62fb      	str	r3, [r7, #44]	; 0x2c
             } while (ip >= 0);
- 8002ca8:	6afb      	ldr	r3, [r7, #44]	; 0x2c
- 8002caa:	2b00      	cmp	r3, #0
- 8002cac:	daf0      	bge.n	8002c90 <QHsm_dispatch_+0x12c>
+ 8002ce4:	6afb      	ldr	r3, [r7, #44]	; 0x2c
+ 8002ce6:	2b00      	cmp	r3, #0
+ 8002ce8:	daf0      	bge.n	8002ccc <QHsm_dispatch_+0x12c>
 
             t = path[0]; /* current state becomes the new source */
- 8002cae:	693b      	ldr	r3, [r7, #16]
- 8002cb0:	637b      	str	r3, [r7, #52]	; 0x34
+ 8002cea:	693b      	ldr	r3, [r7, #16]
+ 8002cec:	637b      	str	r3, [r7, #52]	; 0x34
         while (QEP_TRIG_(t, Q_INIT_SIG) == Q_RET_TRAN) {
- 8002cb2:	6b7b      	ldr	r3, [r7, #52]	; 0x34
- 8002cb4:	490b      	ldr	r1, [pc, #44]	; (8002ce4 <QHsm_dispatch_+0x180>)
- 8002cb6:	68f8      	ldr	r0, [r7, #12]
- 8002cb8:	4798      	blx	r3
- 8002cba:	4603      	mov	r3, r0
- 8002cbc:	2b08      	cmp	r3, #8
- 8002cbe:	d0bc      	beq.n	8002c3a <QHsm_dispatch_+0xd6>
+ 8002cee:	6b7b      	ldr	r3, [r7, #52]	; 0x34
+ 8002cf0:	490b      	ldr	r1, [pc, #44]	; (8002d20 <QHsm_dispatch_+0x180>)
+ 8002cf2:	68f8      	ldr	r0, [r7, #12]
+ 8002cf4:	4798      	blx	r3
+ 8002cf6:	4603      	mov	r3, r0
+ 8002cf8:	2b08      	cmp	r3, #8
+ 8002cfa:	d0bc      	beq.n	8002c76 <QHsm_dispatch_+0xd6>
         QS_END_PRE_()
 
     }
     #endif /* Q_SPY */
 
     me->state.fun = t; /* change the current active state */
- 8002cc0:	68fb      	ldr	r3, [r7, #12]
- 8002cc2:	6b7a      	ldr	r2, [r7, #52]	; 0x34
- 8002cc4:	605a      	str	r2, [r3, #4]
+ 8002cfc:	68fb      	ldr	r3, [r7, #12]
+ 8002cfe:	6b7a      	ldr	r2, [r7, #52]	; 0x34
+ 8002d00:	605a      	str	r2, [r3, #4]
     me->temp.fun  = t; /* mark the configuration as stable */
- 8002cc6:	68fb      	ldr	r3, [r7, #12]
- 8002cc8:	6b7a      	ldr	r2, [r7, #52]	; 0x34
- 8002cca:	609a      	str	r2, [r3, #8]
+ 8002d02:	68fb      	ldr	r3, [r7, #12]
+ 8002d04:	6b7a      	ldr	r2, [r7, #52]	; 0x34
+ 8002d06:	609a      	str	r2, [r3, #8]
 }
- 8002ccc:	bf00      	nop
- 8002cce:	3738      	adds	r7, #56	; 0x38
- 8002cd0:	46bd      	mov	sp, r7
- 8002cd2:	bd80      	pop	{r7, pc}
- 8002cd4:	0800301c 	.word	0x0800301c
- 8002cd8:	08003024 	.word	0x08003024
- 8002cdc:	0800302c 	.word	0x0800302c
- 8002ce0:	08003028 	.word	0x08003028
- 8002ce4:	08003030 	.word	0x08003030
+ 8002d08:	bf00      	nop
+ 8002d0a:	3738      	adds	r7, #56	; 0x38
+ 8002d0c:	46bd      	mov	sp, r7
+ 8002d0e:	bd80      	pop	{r7, pc}
+ 8002d10:	08003058 	.word	0x08003058
+ 8002d14:	08003060 	.word	0x08003060
+ 8002d18:	08003068 	.word	0x08003068
+ 8002d1c:	08003064 	.word	0x08003064
+ 8002d20:	0800306c 	.word	0x0800306c
 
-08002ce8 <QHsm_tran_>:
+08002d24 <QHsm_tran_>:
 
 /*${QEP::QHsm::tran_} ......................................................*/
 int_fast8_t QHsm_tran_(QHsm * const me,
     QStateHandler path[QHSM_MAX_NEST_DEPTH_],
     uint_fast8_t const qs_id)
 {
- 8002ce8:	b580      	push	{r7, lr}
- 8002cea:	b08a      	sub	sp, #40	; 0x28
- 8002cec:	af00      	add	r7, sp, #0
- 8002cee:	60f8      	str	r0, [r7, #12]
- 8002cf0:	60b9      	str	r1, [r7, #8]
- 8002cf2:	607a      	str	r2, [r7, #4]
+ 8002d24:	b580      	push	{r7, lr}
+ 8002d26:	b08a      	sub	sp, #40	; 0x28
+ 8002d28:	af00      	add	r7, sp, #0
+ 8002d2a:	60f8      	str	r0, [r7, #12]
+ 8002d2c:	60b9      	str	r1, [r7, #8]
+ 8002d2e:	607a      	str	r2, [r7, #4]
     Q_UNUSED_PAR(qs_id); // unused when Q_SPY undefined
 
     int_fast8_t ip = -1; /* transition entry path index */
- 8002cf4:	f04f 33ff 	mov.w	r3, #4294967295
- 8002cf8:	627b      	str	r3, [r7, #36]	; 0x24
+ 8002d30:	f04f 33ff 	mov.w	r3, #4294967295
+ 8002d34:	627b      	str	r3, [r7, #36]	; 0x24
     QStateHandler t = path[0];
- 8002cfa:	68bb      	ldr	r3, [r7, #8]
- 8002cfc:	681b      	ldr	r3, [r3, #0]
- 8002cfe:	623b      	str	r3, [r7, #32]
+ 8002d36:	68bb      	ldr	r3, [r7, #8]
+ 8002d38:	681b      	ldr	r3, [r3, #0]
+ 8002d3a:	623b      	str	r3, [r7, #32]
     QStateHandler const s = path[2];
- 8002d00:	68bb      	ldr	r3, [r7, #8]
- 8002d02:	689b      	ldr	r3, [r3, #8]
- 8002d04:	617b      	str	r3, [r7, #20]
+ 8002d3c:	68bb      	ldr	r3, [r7, #8]
+ 8002d3e:	689b      	ldr	r3, [r3, #8]
+ 8002d40:	617b      	str	r3, [r7, #20]
     QS_CRIT_STAT_
 
     /* (a) check source==target (transition to self)... */
     if (s == t) {
- 8002d06:	697a      	ldr	r2, [r7, #20]
- 8002d08:	6a3b      	ldr	r3, [r7, #32]
- 8002d0a:	429a      	cmp	r2, r3
- 8002d0c:	d106      	bne.n	8002d1c <QHsm_tran_+0x34>
+ 8002d42:	697a      	ldr	r2, [r7, #20]
+ 8002d44:	6a3b      	ldr	r3, [r7, #32]
+ 8002d46:	429a      	cmp	r2, r3
+ 8002d48:	d106      	bne.n	8002d58 <QHsm_tran_+0x34>
         QEP_EXIT_(s, qs_id); /* exit the source */
- 8002d0e:	697b      	ldr	r3, [r7, #20]
- 8002d10:	4964      	ldr	r1, [pc, #400]	; (8002ea4 <QHsm_tran_+0x1bc>)
- 8002d12:	68f8      	ldr	r0, [r7, #12]
- 8002d14:	4798      	blx	r3
+ 8002d4a:	697b      	ldr	r3, [r7, #20]
+ 8002d4c:	4964      	ldr	r1, [pc, #400]	; (8002ee0 <QHsm_tran_+0x1bc>)
+ 8002d4e:	68f8      	ldr	r0, [r7, #12]
+ 8002d50:	4798      	blx	r3
         ip = 0; /* enter the target */
- 8002d16:	2300      	movs	r3, #0
- 8002d18:	627b      	str	r3, [r7, #36]	; 0x24
- 8002d1a:	e0be      	b.n	8002e9a <QHsm_tran_+0x1b2>
+ 8002d52:	2300      	movs	r3, #0
+ 8002d54:	627b      	str	r3, [r7, #36]	; 0x24
+ 8002d56:	e0be      	b.n	8002ed6 <QHsm_tran_+0x1b2>
     }
     else {
         /* find superstate of target */
         (void)QEP_TRIG_(t, QEP_EMPTY_SIG_);
- 8002d1c:	6a3b      	ldr	r3, [r7, #32]
- 8002d1e:	4962      	ldr	r1, [pc, #392]	; (8002ea8 <QHsm_tran_+0x1c0>)
- 8002d20:	68f8      	ldr	r0, [r7, #12]
- 8002d22:	4798      	blx	r3
+ 8002d58:	6a3b      	ldr	r3, [r7, #32]
+ 8002d5a:	4962      	ldr	r1, [pc, #392]	; (8002ee4 <QHsm_tran_+0x1c0>)
+ 8002d5c:	68f8      	ldr	r0, [r7, #12]
+ 8002d5e:	4798      	blx	r3
 
         t = me->temp.fun;
- 8002d24:	68fb      	ldr	r3, [r7, #12]
- 8002d26:	689b      	ldr	r3, [r3, #8]
- 8002d28:	623b      	str	r3, [r7, #32]
+ 8002d60:	68fb      	ldr	r3, [r7, #12]
+ 8002d62:	689b      	ldr	r3, [r3, #8]
+ 8002d64:	623b      	str	r3, [r7, #32]
 
         /* (b) check source==target->super... */
         if (s == t) {
- 8002d2a:	697a      	ldr	r2, [r7, #20]
- 8002d2c:	6a3b      	ldr	r3, [r7, #32]
- 8002d2e:	429a      	cmp	r2, r3
- 8002d30:	d102      	bne.n	8002d38 <QHsm_tran_+0x50>
+ 8002d66:	697a      	ldr	r2, [r7, #20]
+ 8002d68:	6a3b      	ldr	r3, [r7, #32]
+ 8002d6a:	429a      	cmp	r2, r3
+ 8002d6c:	d102      	bne.n	8002d74 <QHsm_tran_+0x50>
             ip = 0; /* enter the target */
- 8002d32:	2300      	movs	r3, #0
- 8002d34:	627b      	str	r3, [r7, #36]	; 0x24
- 8002d36:	e0b0      	b.n	8002e9a <QHsm_tran_+0x1b2>
+ 8002d6e:	2300      	movs	r3, #0
+ 8002d70:	627b      	str	r3, [r7, #36]	; 0x24
+ 8002d72:	e0b0      	b.n	8002ed6 <QHsm_tran_+0x1b2>
         }
         else {
             /* find superstate of src */
             (void)QEP_TRIG_(s, QEP_EMPTY_SIG_);
- 8002d38:	697b      	ldr	r3, [r7, #20]
- 8002d3a:	495b      	ldr	r1, [pc, #364]	; (8002ea8 <QHsm_tran_+0x1c0>)
- 8002d3c:	68f8      	ldr	r0, [r7, #12]
- 8002d3e:	4798      	blx	r3
+ 8002d74:	697b      	ldr	r3, [r7, #20]
+ 8002d76:	495b      	ldr	r1, [pc, #364]	; (8002ee4 <QHsm_tran_+0x1c0>)
+ 8002d78:	68f8      	ldr	r0, [r7, #12]
+ 8002d7a:	4798      	blx	r3
 
             /* (c) check source->super==target->super... */
             if (me->temp.fun == t) {
- 8002d40:	68fb      	ldr	r3, [r7, #12]
- 8002d42:	689b      	ldr	r3, [r3, #8]
- 8002d44:	6a3a      	ldr	r2, [r7, #32]
- 8002d46:	429a      	cmp	r2, r3
- 8002d48:	d106      	bne.n	8002d58 <QHsm_tran_+0x70>
+ 8002d7c:	68fb      	ldr	r3, [r7, #12]
+ 8002d7e:	689b      	ldr	r3, [r3, #8]
+ 8002d80:	6a3a      	ldr	r2, [r7, #32]
+ 8002d82:	429a      	cmp	r2, r3
+ 8002d84:	d106      	bne.n	8002d94 <QHsm_tran_+0x70>
                 QEP_EXIT_(s, qs_id); /* exit the source */
- 8002d4a:	697b      	ldr	r3, [r7, #20]
- 8002d4c:	4955      	ldr	r1, [pc, #340]	; (8002ea4 <QHsm_tran_+0x1bc>)
- 8002d4e:	68f8      	ldr	r0, [r7, #12]
- 8002d50:	4798      	blx	r3
+ 8002d86:	697b      	ldr	r3, [r7, #20]
+ 8002d88:	4955      	ldr	r1, [pc, #340]	; (8002ee0 <QHsm_tran_+0x1bc>)
+ 8002d8a:	68f8      	ldr	r0, [r7, #12]
+ 8002d8c:	4798      	blx	r3
                 ip = 0; /* enter the target */
- 8002d52:	2300      	movs	r3, #0
- 8002d54:	627b      	str	r3, [r7, #36]	; 0x24
- 8002d56:	e0a0      	b.n	8002e9a <QHsm_tran_+0x1b2>
+ 8002d8e:	2300      	movs	r3, #0
+ 8002d90:	627b      	str	r3, [r7, #36]	; 0x24
+ 8002d92:	e0a0      	b.n	8002ed6 <QHsm_tran_+0x1b2>
             }
             else {
                 /* (d) check source->super==target... */
                 if (me->temp.fun == path[0]) {
- 8002d58:	68fb      	ldr	r3, [r7, #12]
- 8002d5a:	689a      	ldr	r2, [r3, #8]
- 8002d5c:	68bb      	ldr	r3, [r7, #8]
- 8002d5e:	681b      	ldr	r3, [r3, #0]
- 8002d60:	429a      	cmp	r2, r3
- 8002d62:	d104      	bne.n	8002d6e <QHsm_tran_+0x86>
+ 8002d94:	68fb      	ldr	r3, [r7, #12]
+ 8002d96:	689a      	ldr	r2, [r3, #8]
+ 8002d98:	68bb      	ldr	r3, [r7, #8]
+ 8002d9a:	681b      	ldr	r3, [r3, #0]
+ 8002d9c:	429a      	cmp	r2, r3
+ 8002d9e:	d104      	bne.n	8002daa <QHsm_tran_+0x86>
                     QEP_EXIT_(s, qs_id); /* exit the source */
- 8002d64:	697b      	ldr	r3, [r7, #20]
- 8002d66:	494f      	ldr	r1, [pc, #316]	; (8002ea4 <QHsm_tran_+0x1bc>)
- 8002d68:	68f8      	ldr	r0, [r7, #12]
- 8002d6a:	4798      	blx	r3
- 8002d6c:	e095      	b.n	8002e9a <QHsm_tran_+0x1b2>
+ 8002da0:	697b      	ldr	r3, [r7, #20]
+ 8002da2:	494f      	ldr	r1, [pc, #316]	; (8002ee0 <QHsm_tran_+0x1bc>)
+ 8002da4:	68f8      	ldr	r0, [r7, #12]
+ 8002da6:	4798      	blx	r3
+ 8002da8:	e095      	b.n	8002ed6 <QHsm_tran_+0x1b2>
                 }
                 else {
                     /* (e) check rest of source==target->super->super..
                     * and store the entry path along the way
                     */
                     int_fast8_t iq = 0; /* indicate that LCA not found */
- 8002d6e:	2300      	movs	r3, #0
- 8002d70:	61fb      	str	r3, [r7, #28]
+ 8002daa:	2300      	movs	r3, #0
+ 8002dac:	61fb      	str	r3, [r7, #28]
                     ip = 1; /* enter target and its superstate */
- 8002d72:	2301      	movs	r3, #1
- 8002d74:	627b      	str	r3, [r7, #36]	; 0x24
+ 8002dae:	2301      	movs	r3, #1
+ 8002db0:	627b      	str	r3, [r7, #36]	; 0x24
                     path[1] = t;      /* save the superstate of target */
- 8002d76:	68bb      	ldr	r3, [r7, #8]
- 8002d78:	3304      	adds	r3, #4
- 8002d7a:	6a3a      	ldr	r2, [r7, #32]
- 8002d7c:	601a      	str	r2, [r3, #0]
+ 8002db2:	68bb      	ldr	r3, [r7, #8]
+ 8002db4:	3304      	adds	r3, #4
+ 8002db6:	6a3a      	ldr	r2, [r7, #32]
+ 8002db8:	601a      	str	r2, [r3, #0]
                     t = me->temp.fun; /* save source->super */
- 8002d7e:	68fb      	ldr	r3, [r7, #12]
- 8002d80:	689b      	ldr	r3, [r3, #8]
- 8002d82:	623b      	str	r3, [r7, #32]
+ 8002dba:	68fb      	ldr	r3, [r7, #12]
+ 8002dbc:	689b      	ldr	r3, [r3, #8]
+ 8002dbe:	623b      	str	r3, [r7, #32]
 
                     /* find target->super->super... */
                     QState r = QEP_TRIG_(path[1], QEP_EMPTY_SIG_);
- 8002d84:	68bb      	ldr	r3, [r7, #8]
- 8002d86:	3304      	adds	r3, #4
- 8002d88:	681b      	ldr	r3, [r3, #0]
- 8002d8a:	4947      	ldr	r1, [pc, #284]	; (8002ea8 <QHsm_tran_+0x1c0>)
- 8002d8c:	68f8      	ldr	r0, [r7, #12]
- 8002d8e:	4798      	blx	r3
- 8002d90:	4603      	mov	r3, r0
- 8002d92:	76fb      	strb	r3, [r7, #27]
+ 8002dc0:	68bb      	ldr	r3, [r7, #8]
+ 8002dc2:	3304      	adds	r3, #4
+ 8002dc4:	681b      	ldr	r3, [r3, #0]
+ 8002dc6:	4947      	ldr	r1, [pc, #284]	; (8002ee4 <QHsm_tran_+0x1c0>)
+ 8002dc8:	68f8      	ldr	r0, [r7, #12]
+ 8002dca:	4798      	blx	r3
+ 8002dcc:	4603      	mov	r3, r0
+ 8002dce:	76fb      	strb	r3, [r7, #27]
                     while (r == Q_RET_SUPER) {
- 8002d94:	e025      	b.n	8002de2 <QHsm_tran_+0xfa>
+ 8002dd0:	e025      	b.n	8002e1e <QHsm_tran_+0xfa>
                         ++ip;
- 8002d96:	6a7b      	ldr	r3, [r7, #36]	; 0x24
- 8002d98:	3301      	adds	r3, #1
- 8002d9a:	627b      	str	r3, [r7, #36]	; 0x24
+ 8002dd2:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 8002dd4:	3301      	adds	r3, #1
+ 8002dd6:	627b      	str	r3, [r7, #36]	; 0x24
                         path[ip] = me->temp.fun; /* store the entry path */
- 8002d9c:	6a7b      	ldr	r3, [r7, #36]	; 0x24
- 8002d9e:	009b      	lsls	r3, r3, #2
- 8002da0:	68ba      	ldr	r2, [r7, #8]
- 8002da2:	4413      	add	r3, r2
- 8002da4:	68fa      	ldr	r2, [r7, #12]
- 8002da6:	6892      	ldr	r2, [r2, #8]
- 8002da8:	601a      	str	r2, [r3, #0]
+ 8002dd8:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 8002dda:	009b      	lsls	r3, r3, #2
+ 8002ddc:	68ba      	ldr	r2, [r7, #8]
+ 8002dde:	4413      	add	r3, r2
+ 8002de0:	68fa      	ldr	r2, [r7, #12]
+ 8002de2:	6892      	ldr	r2, [r2, #8]
+ 8002de4:	601a      	str	r2, [r3, #0]
                         if (me->temp.fun == s) { /* is it the source? */
- 8002daa:	68fb      	ldr	r3, [r7, #12]
- 8002dac:	689b      	ldr	r3, [r3, #8]
- 8002dae:	697a      	ldr	r2, [r7, #20]
- 8002db0:	429a      	cmp	r2, r3
- 8002db2:	d10f      	bne.n	8002dd4 <QHsm_tran_+0xec>
+ 8002de6:	68fb      	ldr	r3, [r7, #12]
+ 8002de8:	689b      	ldr	r3, [r3, #8]
+ 8002dea:	697a      	ldr	r2, [r7, #20]
+ 8002dec:	429a      	cmp	r2, r3
+ 8002dee:	d10f      	bne.n	8002e10 <QHsm_tran_+0xec>
                             iq = 1; /* indicate that LCA found */
- 8002db4:	2301      	movs	r3, #1
- 8002db6:	61fb      	str	r3, [r7, #28]
+ 8002df0:	2301      	movs	r3, #1
+ 8002df2:	61fb      	str	r3, [r7, #28]
 
                             /* entry path must not overflow */
                             Q_ASSERT_ID(510,
- 8002db8:	6a7b      	ldr	r3, [r7, #36]	; 0x24
- 8002dba:	2b05      	cmp	r3, #5
- 8002dbc:	dd04      	ble.n	8002dc8 <QHsm_tran_+0xe0>
- 8002dbe:	f44f 71ff 	mov.w	r1, #510	; 0x1fe
- 8002dc2:	483a      	ldr	r0, [pc, #232]	; (8002eac <QHsm_tran_+0x1c4>)
- 8002dc4:	f7fd ffae 	bl	8000d24 <Q_onAssert>
+ 8002df4:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 8002df6:	2b05      	cmp	r3, #5
+ 8002df8:	dd04      	ble.n	8002e04 <QHsm_tran_+0xe0>
+ 8002dfa:	f44f 71ff 	mov.w	r1, #510	; 0x1fe
+ 8002dfe:	483a      	ldr	r0, [pc, #232]	; (8002ee8 <QHsm_tran_+0x1c4>)
+ 8002e00:	f7fd ff90 	bl	8000d24 <Q_onAssert>
                                 ip < QHSM_MAX_NEST_DEPTH_);
                             --ip; /* do not enter the source */
- 8002dc8:	6a7b      	ldr	r3, [r7, #36]	; 0x24
- 8002dca:	3b01      	subs	r3, #1
- 8002dcc:	627b      	str	r3, [r7, #36]	; 0x24
+ 8002e04:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 8002e06:	3b01      	subs	r3, #1
+ 8002e08:	627b      	str	r3, [r7, #36]	; 0x24
                             r = Q_RET_HANDLED; /* terminate loop */
- 8002dce:	2303      	movs	r3, #3
- 8002dd0:	76fb      	strb	r3, [r7, #27]
- 8002dd2:	e006      	b.n	8002de2 <QHsm_tran_+0xfa>
+ 8002e0a:	2303      	movs	r3, #3
+ 8002e0c:	76fb      	strb	r3, [r7, #27]
+ 8002e0e:	e006      	b.n	8002e1e <QHsm_tran_+0xfa>
                         }
                          /* it is not the source, keep going up */
                         else {
                             r = QEP_TRIG_(me->temp.fun, QEP_EMPTY_SIG_);
- 8002dd4:	68fb      	ldr	r3, [r7, #12]
- 8002dd6:	689b      	ldr	r3, [r3, #8]
- 8002dd8:	4933      	ldr	r1, [pc, #204]	; (8002ea8 <QHsm_tran_+0x1c0>)
- 8002dda:	68f8      	ldr	r0, [r7, #12]
- 8002ddc:	4798      	blx	r3
- 8002dde:	4603      	mov	r3, r0
- 8002de0:	76fb      	strb	r3, [r7, #27]
+ 8002e10:	68fb      	ldr	r3, [r7, #12]
+ 8002e12:	689b      	ldr	r3, [r3, #8]
+ 8002e14:	4933      	ldr	r1, [pc, #204]	; (8002ee4 <QHsm_tran_+0x1c0>)
+ 8002e16:	68f8      	ldr	r0, [r7, #12]
+ 8002e18:	4798      	blx	r3
+ 8002e1a:	4603      	mov	r3, r0
+ 8002e1c:	76fb      	strb	r3, [r7, #27]
                     while (r == Q_RET_SUPER) {
- 8002de2:	7efb      	ldrb	r3, [r7, #27]
- 8002de4:	2b00      	cmp	r3, #0
- 8002de6:	d0d6      	beq.n	8002d96 <QHsm_tran_+0xae>
+ 8002e1e:	7efb      	ldrb	r3, [r7, #27]
+ 8002e20:	2b00      	cmp	r3, #0
+ 8002e22:	d0d6      	beq.n	8002dd2 <QHsm_tran_+0xae>
                         }
                     }
 
                     /* the LCA not found yet? */
                     if (iq == 0) {
- 8002de8:	69fb      	ldr	r3, [r7, #28]
- 8002dea:	2b00      	cmp	r3, #0
- 8002dec:	d155      	bne.n	8002e9a <QHsm_tran_+0x1b2>
+ 8002e24:	69fb      	ldr	r3, [r7, #28]
+ 8002e26:	2b00      	cmp	r3, #0
+ 8002e28:	d155      	bne.n	8002ed6 <QHsm_tran_+0x1b2>
 
                         /* entry path must not overflow */
                         Q_ASSERT_ID(520, ip < QHSM_MAX_NEST_DEPTH_);
- 8002dee:	6a7b      	ldr	r3, [r7, #36]	; 0x24
- 8002df0:	2b05      	cmp	r3, #5
- 8002df2:	dd04      	ble.n	8002dfe <QHsm_tran_+0x116>
- 8002df4:	f44f 7102 	mov.w	r1, #520	; 0x208
- 8002df8:	482c      	ldr	r0, [pc, #176]	; (8002eac <QHsm_tran_+0x1c4>)
- 8002dfa:	f7fd ff93 	bl	8000d24 <Q_onAssert>
+ 8002e2a:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 8002e2c:	2b05      	cmp	r3, #5
+ 8002e2e:	dd04      	ble.n	8002e3a <QHsm_tran_+0x116>
+ 8002e30:	f44f 7102 	mov.w	r1, #520	; 0x208
+ 8002e34:	482c      	ldr	r0, [pc, #176]	; (8002ee8 <QHsm_tran_+0x1c4>)
+ 8002e36:	f7fd ff75 	bl	8000d24 <Q_onAssert>
 
                         QEP_EXIT_(s, qs_id); /* exit the source */
- 8002dfe:	697b      	ldr	r3, [r7, #20]
- 8002e00:	4928      	ldr	r1, [pc, #160]	; (8002ea4 <QHsm_tran_+0x1bc>)
- 8002e02:	68f8      	ldr	r0, [r7, #12]
- 8002e04:	4798      	blx	r3
+ 8002e3a:	697b      	ldr	r3, [r7, #20]
+ 8002e3c:	4928      	ldr	r1, [pc, #160]	; (8002ee0 <QHsm_tran_+0x1bc>)
+ 8002e3e:	68f8      	ldr	r0, [r7, #12]
+ 8002e40:	4798      	blx	r3
 
                         /* (f) check the rest of source->super
                         *                  == target->super->super...
                         */
                         iq = ip;
- 8002e06:	6a7b      	ldr	r3, [r7, #36]	; 0x24
- 8002e08:	61fb      	str	r3, [r7, #28]
+ 8002e42:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 8002e44:	61fb      	str	r3, [r7, #28]
                         r = Q_RET_IGNORED; /* LCA NOT found */
- 8002e0a:	2304      	movs	r3, #4
- 8002e0c:	76fb      	strb	r3, [r7, #27]
+ 8002e46:	2304      	movs	r3, #4
+ 8002e48:	76fb      	strb	r3, [r7, #27]
                         do {
                             if (t == path[iq]) { /* is this the LCA? */
- 8002e0e:	69fb      	ldr	r3, [r7, #28]
- 8002e10:	009b      	lsls	r3, r3, #2
- 8002e12:	68ba      	ldr	r2, [r7, #8]
- 8002e14:	4413      	add	r3, r2
- 8002e16:	681b      	ldr	r3, [r3, #0]
- 8002e18:	6a3a      	ldr	r2, [r7, #32]
- 8002e1a:	429a      	cmp	r2, r3
- 8002e1c:	d108      	bne.n	8002e30 <QHsm_tran_+0x148>
+ 8002e4a:	69fb      	ldr	r3, [r7, #28]
+ 8002e4c:	009b      	lsls	r3, r3, #2
+ 8002e4e:	68ba      	ldr	r2, [r7, #8]
+ 8002e50:	4413      	add	r3, r2
+ 8002e52:	681b      	ldr	r3, [r3, #0]
+ 8002e54:	6a3a      	ldr	r2, [r7, #32]
+ 8002e56:	429a      	cmp	r2, r3
+ 8002e58:	d108      	bne.n	8002e6c <QHsm_tran_+0x148>
                                 r = Q_RET_HANDLED; /* LCA found */
- 8002e1e:	2303      	movs	r3, #3
- 8002e20:	76fb      	strb	r3, [r7, #27]
+ 8002e5a:	2303      	movs	r3, #3
+ 8002e5c:	76fb      	strb	r3, [r7, #27]
                                 ip = iq - 1; /* do not enter LCA */
- 8002e22:	69fb      	ldr	r3, [r7, #28]
- 8002e24:	3b01      	subs	r3, #1
- 8002e26:	627b      	str	r3, [r7, #36]	; 0x24
+ 8002e5e:	69fb      	ldr	r3, [r7, #28]
+ 8002e60:	3b01      	subs	r3, #1
+ 8002e62:	627b      	str	r3, [r7, #36]	; 0x24
                                 iq = -1; /* cause termintion of the loop */
- 8002e28:	f04f 33ff 	mov.w	r3, #4294967295
- 8002e2c:	61fb      	str	r3, [r7, #28]
- 8002e2e:	e002      	b.n	8002e36 <QHsm_tran_+0x14e>
+ 8002e64:	f04f 33ff 	mov.w	r3, #4294967295
+ 8002e68:	61fb      	str	r3, [r7, #28]
+ 8002e6a:	e002      	b.n	8002e72 <QHsm_tran_+0x14e>
                             }
                             else {
                                 --iq; /* try lower superstate of target */
- 8002e30:	69fb      	ldr	r3, [r7, #28]
- 8002e32:	3b01      	subs	r3, #1
- 8002e34:	61fb      	str	r3, [r7, #28]
+ 8002e6c:	69fb      	ldr	r3, [r7, #28]
+ 8002e6e:	3b01      	subs	r3, #1
+ 8002e70:	61fb      	str	r3, [r7, #28]
                             }
                         } while (iq >= 0);
- 8002e36:	69fb      	ldr	r3, [r7, #28]
- 8002e38:	2b00      	cmp	r3, #0
- 8002e3a:	dae8      	bge.n	8002e0e <QHsm_tran_+0x126>
+ 8002e72:	69fb      	ldr	r3, [r7, #28]
+ 8002e74:	2b00      	cmp	r3, #0
+ 8002e76:	dae8      	bge.n	8002e4a <QHsm_tran_+0x126>
 
                         /* LCA not found? */
                         if (r != Q_RET_HANDLED) {
- 8002e3c:	7efb      	ldrb	r3, [r7, #27]
- 8002e3e:	2b03      	cmp	r3, #3
- 8002e40:	d02b      	beq.n	8002e9a <QHsm_tran_+0x1b2>
+ 8002e78:	7efb      	ldrb	r3, [r7, #27]
+ 8002e7a:	2b03      	cmp	r3, #3
+ 8002e7c:	d02b      	beq.n	8002ed6 <QHsm_tran_+0x1b2>
                             /* (g) check each source->super->...
                             * for each target->super...
                             */
                             r = Q_RET_IGNORED; /* keep looping */
- 8002e42:	2304      	movs	r3, #4
- 8002e44:	76fb      	strb	r3, [r7, #27]
+ 8002e7e:	2304      	movs	r3, #4
+ 8002e80:	76fb      	strb	r3, [r7, #27]
                             do {
                                 /* exit t unhandled? */
                                 if (QEP_TRIG_(t, Q_EXIT_SIG)
- 8002e46:	6a3b      	ldr	r3, [r7, #32]
- 8002e48:	4916      	ldr	r1, [pc, #88]	; (8002ea4 <QHsm_tran_+0x1bc>)
- 8002e4a:	68f8      	ldr	r0, [r7, #12]
- 8002e4c:	4798      	blx	r3
- 8002e4e:	4603      	mov	r3, r0
- 8002e50:	2b03      	cmp	r3, #3
- 8002e52:	d103      	bne.n	8002e5c <QHsm_tran_+0x174>
+ 8002e82:	6a3b      	ldr	r3, [r7, #32]
+ 8002e84:	4916      	ldr	r1, [pc, #88]	; (8002ee0 <QHsm_tran_+0x1bc>)
+ 8002e86:	68f8      	ldr	r0, [r7, #12]
+ 8002e88:	4798      	blx	r3
+ 8002e8a:	4603      	mov	r3, r0
+ 8002e8c:	2b03      	cmp	r3, #3
+ 8002e8e:	d103      	bne.n	8002e98 <QHsm_tran_+0x174>
                                     QS_BEGIN_PRE_(QS_QEP_STATE_EXIT, qs_id)
                                         QS_OBJ_PRE_(me);
                                         QS_FUN_PRE_(t);
                                     QS_END_PRE_()
 
                                     (void)QEP_TRIG_(t, QEP_EMPTY_SIG_);
- 8002e54:	6a3b      	ldr	r3, [r7, #32]
- 8002e56:	4914      	ldr	r1, [pc, #80]	; (8002ea8 <QHsm_tran_+0x1c0>)
- 8002e58:	68f8      	ldr	r0, [r7, #12]
- 8002e5a:	4798      	blx	r3
+ 8002e90:	6a3b      	ldr	r3, [r7, #32]
+ 8002e92:	4914      	ldr	r1, [pc, #80]	; (8002ee4 <QHsm_tran_+0x1c0>)
+ 8002e94:	68f8      	ldr	r0, [r7, #12]
+ 8002e96:	4798      	blx	r3
                                 }
                                 t = me->temp.fun; /* set to super of t */
- 8002e5c:	68fb      	ldr	r3, [r7, #12]
- 8002e5e:	689b      	ldr	r3, [r3, #8]
- 8002e60:	623b      	str	r3, [r7, #32]
+ 8002e98:	68fb      	ldr	r3, [r7, #12]
+ 8002e9a:	689b      	ldr	r3, [r3, #8]
+ 8002e9c:	623b      	str	r3, [r7, #32]
                                 iq = ip;
- 8002e62:	6a7b      	ldr	r3, [r7, #36]	; 0x24
- 8002e64:	61fb      	str	r3, [r7, #28]
+ 8002e9e:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 8002ea0:	61fb      	str	r3, [r7, #28]
                                 do {
                                     /* is this LCA? */
                                     if (t == path[iq]) {
- 8002e66:	69fb      	ldr	r3, [r7, #28]
- 8002e68:	009b      	lsls	r3, r3, #2
- 8002e6a:	68ba      	ldr	r2, [r7, #8]
- 8002e6c:	4413      	add	r3, r2
- 8002e6e:	681b      	ldr	r3, [r3, #0]
- 8002e70:	6a3a      	ldr	r2, [r7, #32]
- 8002e72:	429a      	cmp	r2, r3
- 8002e74:	d108      	bne.n	8002e88 <QHsm_tran_+0x1a0>
+ 8002ea2:	69fb      	ldr	r3, [r7, #28]
+ 8002ea4:	009b      	lsls	r3, r3, #2
+ 8002ea6:	68ba      	ldr	r2, [r7, #8]
+ 8002ea8:	4413      	add	r3, r2
+ 8002eaa:	681b      	ldr	r3, [r3, #0]
+ 8002eac:	6a3a      	ldr	r2, [r7, #32]
+ 8002eae:	429a      	cmp	r2, r3
+ 8002eb0:	d108      	bne.n	8002ec4 <QHsm_tran_+0x1a0>
                                         /* do not enter LCA */
                                         ip = (int_fast8_t)(iq - 1);
- 8002e76:	69fb      	ldr	r3, [r7, #28]
- 8002e78:	3b01      	subs	r3, #1
- 8002e7a:	627b      	str	r3, [r7, #36]	; 0x24
+ 8002eb2:	69fb      	ldr	r3, [r7, #28]
+ 8002eb4:	3b01      	subs	r3, #1
+ 8002eb6:	627b      	str	r3, [r7, #36]	; 0x24
                                         iq = -1; /* break out of inner loop */
- 8002e7c:	f04f 33ff 	mov.w	r3, #4294967295
- 8002e80:	61fb      	str	r3, [r7, #28]
+ 8002eb8:	f04f 33ff 	mov.w	r3, #4294967295
+ 8002ebc:	61fb      	str	r3, [r7, #28]
                                         /* break out of outer loop */
                                         r = Q_RET_HANDLED;
- 8002e82:	2303      	movs	r3, #3
- 8002e84:	76fb      	strb	r3, [r7, #27]
- 8002e86:	e002      	b.n	8002e8e <QHsm_tran_+0x1a6>
+ 8002ebe:	2303      	movs	r3, #3
+ 8002ec0:	76fb      	strb	r3, [r7, #27]
+ 8002ec2:	e002      	b.n	8002eca <QHsm_tran_+0x1a6>
                                     }
                                     else {
                                         --iq;
- 8002e88:	69fb      	ldr	r3, [r7, #28]
- 8002e8a:	3b01      	subs	r3, #1
- 8002e8c:	61fb      	str	r3, [r7, #28]
+ 8002ec4:	69fb      	ldr	r3, [r7, #28]
+ 8002ec6:	3b01      	subs	r3, #1
+ 8002ec8:	61fb      	str	r3, [r7, #28]
                                     }
                                 } while (iq >= 0);
- 8002e8e:	69fb      	ldr	r3, [r7, #28]
- 8002e90:	2b00      	cmp	r3, #0
- 8002e92:	dae8      	bge.n	8002e66 <QHsm_tran_+0x17e>
+ 8002eca:	69fb      	ldr	r3, [r7, #28]
+ 8002ecc:	2b00      	cmp	r3, #0
+ 8002ece:	dae8      	bge.n	8002ea2 <QHsm_tran_+0x17e>
                             } while (r != Q_RET_HANDLED);
- 8002e94:	7efb      	ldrb	r3, [r7, #27]
- 8002e96:	2b03      	cmp	r3, #3
- 8002e98:	d1d5      	bne.n	8002e46 <QHsm_tran_+0x15e>
+ 8002ed0:	7efb      	ldrb	r3, [r7, #27]
+ 8002ed2:	2b03      	cmp	r3, #3
+ 8002ed4:	d1d5      	bne.n	8002e82 <QHsm_tran_+0x15e>
                     }
                 }
             }
         }
     }
     return ip;
- 8002e9a:	6a7b      	ldr	r3, [r7, #36]	; 0x24
+ 8002ed6:	6a7b      	ldr	r3, [r7, #36]	; 0x24
 }
- 8002e9c:	4618      	mov	r0, r3
- 8002e9e:	3728      	adds	r7, #40	; 0x28
- 8002ea0:	46bd      	mov	sp, r7
- 8002ea2:	bd80      	pop	{r7, pc}
- 8002ea4:	0800302c 	.word	0x0800302c
- 8002ea8:	08003024 	.word	0x08003024
- 8002eac:	0800301c 	.word	0x0800301c
+ 8002ed8:	4618      	mov	r0, r3
+ 8002eda:	3728      	adds	r7, #40	; 0x28
+ 8002edc:	46bd      	mov	sp, r7
+ 8002ede:	bd80      	pop	{r7, pc}
+ 8002ee0:	08003068 	.word	0x08003068
+ 8002ee4:	08003060 	.word	0x08003060
+ 8002ee8:	08003058 	.word	0x08003058
 
-08002eb0 <__libc_init_array>:
- 8002eb0:	b570      	push	{r4, r5, r6, lr}
- 8002eb2:	4d0d      	ldr	r5, [pc, #52]	; (8002ee8 <__libc_init_array+0x38>)
- 8002eb4:	4c0d      	ldr	r4, [pc, #52]	; (8002eec <__libc_init_array+0x3c>)
- 8002eb6:	1b64      	subs	r4, r4, r5
- 8002eb8:	10a4      	asrs	r4, r4, #2
- 8002eba:	2600      	movs	r6, #0
- 8002ebc:	42a6      	cmp	r6, r4
- 8002ebe:	d109      	bne.n	8002ed4 <__libc_init_array+0x24>
- 8002ec0:	4d0b      	ldr	r5, [pc, #44]	; (8002ef0 <__libc_init_array+0x40>)
- 8002ec2:	4c0c      	ldr	r4, [pc, #48]	; (8002ef4 <__libc_init_array+0x44>)
- 8002ec4:	f000 f820 	bl	8002f08 <_init>
- 8002ec8:	1b64      	subs	r4, r4, r5
- 8002eca:	10a4      	asrs	r4, r4, #2
- 8002ecc:	2600      	movs	r6, #0
- 8002ece:	42a6      	cmp	r6, r4
- 8002ed0:	d105      	bne.n	8002ede <__libc_init_array+0x2e>
- 8002ed2:	bd70      	pop	{r4, r5, r6, pc}
- 8002ed4:	f855 3b04 	ldr.w	r3, [r5], #4
- 8002ed8:	4798      	blx	r3
- 8002eda:	3601      	adds	r6, #1
- 8002edc:	e7ee      	b.n	8002ebc <__libc_init_array+0xc>
- 8002ede:	f855 3b04 	ldr.w	r3, [r5], #4
- 8002ee2:	4798      	blx	r3
- 8002ee4:	3601      	adds	r6, #1
- 8002ee6:	e7f2      	b.n	8002ece <__libc_init_array+0x1e>
- 8002ee8:	08003044 	.word	0x08003044
- 8002eec:	08003044 	.word	0x08003044
- 8002ef0:	08003044 	.word	0x08003044
- 8002ef4:	08003048 	.word	0x08003048
+08002eec <__libc_init_array>:
+ 8002eec:	b570      	push	{r4, r5, r6, lr}
+ 8002eee:	4d0d      	ldr	r5, [pc, #52]	; (8002f24 <__libc_init_array+0x38>)
+ 8002ef0:	4c0d      	ldr	r4, [pc, #52]	; (8002f28 <__libc_init_array+0x3c>)
+ 8002ef2:	1b64      	subs	r4, r4, r5
+ 8002ef4:	10a4      	asrs	r4, r4, #2
+ 8002ef6:	2600      	movs	r6, #0
+ 8002ef8:	42a6      	cmp	r6, r4
+ 8002efa:	d109      	bne.n	8002f10 <__libc_init_array+0x24>
+ 8002efc:	4d0b      	ldr	r5, [pc, #44]	; (8002f2c <__libc_init_array+0x40>)
+ 8002efe:	4c0c      	ldr	r4, [pc, #48]	; (8002f30 <__libc_init_array+0x44>)
+ 8002f00:	f000 f820 	bl	8002f44 <_init>
+ 8002f04:	1b64      	subs	r4, r4, r5
+ 8002f06:	10a4      	asrs	r4, r4, #2
+ 8002f08:	2600      	movs	r6, #0
+ 8002f0a:	42a6      	cmp	r6, r4
+ 8002f0c:	d105      	bne.n	8002f1a <__libc_init_array+0x2e>
+ 8002f0e:	bd70      	pop	{r4, r5, r6, pc}
+ 8002f10:	f855 3b04 	ldr.w	r3, [r5], #4
+ 8002f14:	4798      	blx	r3
+ 8002f16:	3601      	adds	r6, #1
+ 8002f18:	e7ee      	b.n	8002ef8 <__libc_init_array+0xc>
+ 8002f1a:	f855 3b04 	ldr.w	r3, [r5], #4
+ 8002f1e:	4798      	blx	r3
+ 8002f20:	3601      	adds	r6, #1
+ 8002f22:	e7f2      	b.n	8002f0a <__libc_init_array+0x1e>
+ 8002f24:	08003080 	.word	0x08003080
+ 8002f28:	08003080 	.word	0x08003080
+ 8002f2c:	08003080 	.word	0x08003080
+ 8002f30:	08003084 	.word	0x08003084
 
-08002ef8 <memset>:
- 8002ef8:	4402      	add	r2, r0
- 8002efa:	4603      	mov	r3, r0
- 8002efc:	4293      	cmp	r3, r2
- 8002efe:	d100      	bne.n	8002f02 <memset+0xa>
- 8002f00:	4770      	bx	lr
- 8002f02:	f803 1b01 	strb.w	r1, [r3], #1
- 8002f06:	e7f9      	b.n	8002efc <memset+0x4>
+08002f34 <memset>:
+ 8002f34:	4402      	add	r2, r0
+ 8002f36:	4603      	mov	r3, r0
+ 8002f38:	4293      	cmp	r3, r2
+ 8002f3a:	d100      	bne.n	8002f3e <memset+0xa>
+ 8002f3c:	4770      	bx	lr
+ 8002f3e:	f803 1b01 	strb.w	r1, [r3], #1
+ 8002f42:	e7f9      	b.n	8002f38 <memset+0x4>
 
-08002f08 <_init>:
- 8002f08:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8002f0a:	bf00      	nop
- 8002f0c:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 8002f0e:	bc08      	pop	{r3}
- 8002f10:	469e      	mov	lr, r3
- 8002f12:	4770      	bx	lr
+08002f44 <_init>:
+ 8002f44:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8002f46:	bf00      	nop
+ 8002f48:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8002f4a:	bc08      	pop	{r3}
+ 8002f4c:	469e      	mov	lr, r3
+ 8002f4e:	4770      	bx	lr
 
-08002f14 <_fini>:
- 8002f14:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
- 8002f16:	bf00      	nop
- 8002f18:	bcf8      	pop	{r3, r4, r5, r6, r7}
- 8002f1a:	bc08      	pop	{r3}
- 8002f1c:	469e      	mov	lr, r3
- 8002f1e:	4770      	bx	lr
+08002f50 <_fini>:
+ 8002f50:	b5f8      	push	{r3, r4, r5, r6, r7, lr}
+ 8002f52:	bf00      	nop
+ 8002f54:	bcf8      	pop	{r3, r4, r5, r6, r7}
+ 8002f56:	bc08      	pop	{r3}
+ 8002f58:	469e      	mov	lr, r3
+ 8002f5a:	4770      	bx	lr
