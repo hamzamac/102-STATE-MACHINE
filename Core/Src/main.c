@@ -103,7 +103,7 @@ int main(void)
 
   while (1)
   {
-	 HAL_Delay(1000);
+	 HAL_Delay(500);
 	 Lamp_blink(&lamp);
     /* USER CODE END WHILE */
 
@@ -475,16 +475,10 @@ void Q_onAssert( char const * 	module, int_t 	location ){
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-	uint8_t log[] = "GPIO_EXTI_Callback\r\n";
-	uart_log(log);
 
 	if(GPIO_Pin == BUTTON_2_Pin){
-		uint8_t log[] = "BLUE_BUTTON_CLICK\r\n";
-		uart_log(log);
 		Lamp_pushSwitch(&lamp);
 	}else{
-		uint8_t log[] = "YELLOW_BUTTON_CLICK\r\n";
-		uart_log(log);
 		Lamp_holdSwitch(&lamp);
 	}
 }

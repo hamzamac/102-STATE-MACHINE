@@ -51,7 +51,7 @@ QHSM_DISPATCH(&amp;me-&gt;super, &amp;e, 0 );</code>
      </tran>
      <state name="RED_BLINK">
       <tran trig="SOFT_CLICK" target="../../../2" cpref="../../../2/0">
-       <tran_glyph conn="44,44,1,3,5,4,18">
+       <tran_glyph conn="44,44,1,3,2,4,21">
         <action box="7,2,10,2"/>
        </tran_glyph>
       </tran>
