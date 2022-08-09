@@ -103,8 +103,8 @@ int main(void)
 
   while (1)
   {
-	  HAL_Delay(500);
-//	  Lamp_pushSwitch(&lamp);
+	 HAL_Delay(1000);
+	 Lamp_blink(&lamp);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -212,7 +212,7 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOD_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOC, NCS_MEMS_SPI_Pin|CSX_Pin|OTG_FS_PSO_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOC, NCS_MEMS_SPI_Pin|CSX_Pin|BOTTON_YELLOW_Pin, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(ACP_RST_GPIO_Port, ACP_RST_Pin, GPIO_PIN_RESET);
@@ -259,24 +259,31 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF12_FMC;
   HAL_GPIO_Init(SDNWE_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : NCS_MEMS_SPI_Pin CSX_Pin OTG_FS_PSO_Pin */
-  GPIO_InitStruct.Pin = NCS_MEMS_SPI_Pin|CSX_Pin|OTG_FS_PSO_Pin;
+  /*Configure GPIO pin : NCS_MEMS_SPI_Pin */
+  GPIO_InitStruct.Pin = NCS_MEMS_SPI_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(NCS_MEMS_SPI_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : CSX_Pin BOTTON_YELLOW_Pin */
+  GPIO_InitStruct.Pin = CSX_Pin|BOTTON_YELLOW_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : B1_Pin MEMS_INT1_Pin TP_INT1_Pin */
-  GPIO_InitStruct.Pin = B1_Pin|MEMS_INT1_Pin|TP_INT1_Pin;
+  /*Configure GPIO pins : B1_Pin TP_INT1_Pin */
+  GPIO_InitStruct.Pin = B1_Pin|TP_INT1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_EVT_RISING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : BUTTON_Pin */
-  GPIO_InitStruct.Pin = BUTTON_Pin;
+  /*Configure GPIO pins : BUTTON_1_Pin BUTTON_2_Pin */
+  GPIO_InitStruct.Pin = BUTTON_1_Pin|BUTTON_2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  HAL_GPIO_Init(BUTTON_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : B5_Pin VSYNC_Pin G2_Pin R4_Pin
                            R5_Pin */
@@ -312,7 +319,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : BOOT1_Pin */
   GPIO_InitStruct.Pin = BOOT1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(BOOT1_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : A10_Pin A11_Pin BA0_Pin BA1_Pin
@@ -369,11 +376,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF12_FMC;
   HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : TE_Pin */
-  GPIO_InitStruct.Pin = TE_Pin;
+  /*Configure GPIO pins : TE_Pin PD4 */
+  GPIO_InitStruct.Pin = TE_Pin|GPIO_PIN_4;
   GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(TE_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOD, &GPIO_InitStruct);
 
   /*Configure GPIO pins : RDX_Pin WRX_DCX_Pin */
   GPIO_InitStruct.Pin = RDX_Pin|WRX_DCX_Pin;
@@ -437,6 +444,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOG, &GPIO_InitStruct);
 
+  /*Configure GPIO pin : PB4 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
   /*Configure GPIO pins : SDCKE1_Pin SDNE1_Pin */
   GPIO_InitStruct.Pin = SDCKE1_Pin|SDNE1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
@@ -446,6 +459,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
+  HAL_NVIC_SetPriority(EXTI1_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(EXTI1_IRQn);
+
   HAL_NVIC_SetPriority(EXTI2_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(EXTI2_IRQn);
 
@@ -453,12 +469,26 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 void Q_onAssert( char const * 	module, int_t 	location ){
+	uint8_t log[] = "Q_onAssert\r\n";
+	uart_log(log);
 	while(1);
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-	Lamp_pushSwitch(&lamp);
+	uint8_t log[] = "GPIO_EXTI_Callback\r\n";
+	uart_log(log);
+
+	if(GPIO_Pin == BUTTON_2_Pin){
+		uint8_t log[] = "BLUE_BUTTON_CLICK\r\n";
+		uart_log(log);
+		Lamp_pushSwitch(&lamp);
+	}else{
+		uint8_t log[] = "YELLOW_BUTTON_CLICK\r\n";
+		uart_log(log);
+		Lamp_holdSwitch(&lamp);
+	}
 }
+
 
 
 /* USER CODE END 4 */

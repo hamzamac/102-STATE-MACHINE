@@ -47,6 +47,13 @@ void Lamp_holdSwitch(Lamp * const me) {
     QHSM_DISPATCH(&me->super, &e, 0 );
 }
 
+/*.${LampSM::Lamp::blink} ..................................................*/
+void Lamp_blink(Lamp * const me) {
+        QEvt e;
+        e.sig = (QSignal)BLINK_SIG;
+        QHSM_DISPATCH(&me->super, &e, 0 );
+}
+
 /*.${LampSM::Lamp::SM} .....................................................*/
 QState Lamp_initial(Lamp * const me, void const * const par) {
     /*.${LampSM::Lamp::SM::initial} */
@@ -75,7 +82,7 @@ QState Lamp_LED_RED(Lamp * const me, QEvt const * const e) {
         }
         /*.${LampSM::Lamp::SM::LED_RED::HARD_CLICK} */
         case HARD_CLICK_SIG: {
-            status_ = Q_TRAN(&Lamp_BLINK);
+            status_ = Q_TRAN(&Lamp_RED_BLINK);
             break;
         }
         default: {
@@ -85,12 +92,22 @@ QState Lamp_LED_RED(Lamp * const me, QEvt const * const e) {
     }
     return status_;
 }
-/*.${LampSM::Lamp::SM::LED_RED::BLINK} .....................................*/
-QState Lamp_BLINK(Lamp * const me, QEvt const * const e) {
+/*.${LampSM::Lamp::SM::LED_RED::RED_BLINK} .................................*/
+QState Lamp_RED_BLINK(Lamp * const me, QEvt const * const e) {
     QState status_;
     switch (e->sig) {
-        /*.${LampSM::Lamp::SM::LED_RED::BLINK} */
-        case Q_ENTRY_SIG: {
+        /*.${LampSM::Lamp::SM::LED_RED::RED_BLINK::SOFT_CLICK} */
+        case SOFT_CLICK_SIG: {
+            status_ = Q_TRAN(&Lamp_LED_GREEN);
+            break;
+        }
+        /*.${LampSM::Lamp::SM::LED_RED::RED_BLINK::HARD_CLICK} */
+        case HARD_CLICK_SIG: {
+            status_ = Q_TRAN(&Lamp_LED_RED);
+            break;
+        }
+        /*.${LampSM::Lamp::SM::LED_RED::RED_BLINK::BLINK} */
+        case BLINK_SIG: {
             APP_RED_LED_BLINK();
             status_ = Q_HANDLED();
             break;
@@ -123,8 +140,40 @@ QState Lamp_LED_GREEN(Lamp * const me, QEvt const * const e) {
             status_ = Q_TRAN(&Lamp_LED_RED);
             break;
         }
+        /*.${LampSM::Lamp::SM::LED_GREEN::HARD_CLICK} */
+        case HARD_CLICK_SIG: {
+            status_ = Q_TRAN(&Lamp_GREEN_BLINK);
+            break;
+        }
         default: {
             status_ = Q_SUPER(&QHsm_top);
+            break;
+        }
+    }
+    return status_;
+}
+/*.${LampSM::Lamp::SM::LED_GREEN::GREEN_BLINK} .............................*/
+QState Lamp_GREEN_BLINK(Lamp * const me, QEvt const * const e) {
+    QState status_;
+    switch (e->sig) {
+        /*.${LampSM::Lamp::SM::LED_GREEN::GREEN_BLINK::BLINK} */
+        case BLINK_SIG: {
+            APP_GREEN_LED_BLINK();
+            status_ = Q_HANDLED();
+            break;
+        }
+        /*.${LampSM::Lamp::SM::LED_GREEN::GREEN_BLINK::HARD_CLICK} */
+        case HARD_CLICK_SIG: {
+            status_ = Q_TRAN(&Lamp_LED_GREEN);
+            break;
+        }
+        /*.${LampSM::Lamp::SM::LED_GREEN::GREEN_BLINK::SOFT_CLICK} */
+        case SOFT_CLICK_SIG: {
+            status_ = Q_TRAN(&Lamp_LED_RED);
+            break;
+        }
+        default: {
+            status_ = Q_SUPER(&Lamp_LED_GREEN);
             break;
         }
     }
