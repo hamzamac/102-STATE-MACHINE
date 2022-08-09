@@ -93,8 +93,7 @@ int main(void)
   Lamp_ctor(&lamp);
   QHSM_INIT( &lamp.super, (QEvt *)0, 0 );
 
-  /* trigger initial transition */
-
+  AppInit();
 
   /* USER CODE END 2 */
 

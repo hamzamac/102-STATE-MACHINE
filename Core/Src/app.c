@@ -56,31 +56,64 @@ void uart_log(uint8_t * str){
 
 
 /*FreeRTOS Tasks*/
-void taskAPP_GREEN_LED_ON( void *pvParameters ){
+
+TaskHandle_t 	*handleGREEN_LED_ON,
+				*handleGREEN_LED_OFF,
+				*handleGREEN_LED_BLINK,
+				*handleRED_LED_ON,
+				*handleRED_LED_OFF,
+				*handleRED_LED_BLINK;
+
+void AppInit(){
+
+	BaseType_t result = xTaskCreate( taskGREEN_LED_ON, "GREEN_LED_ON", 1000, NULL, 1, handleGREEN_LED_ON );
+	configASSERT( result == pdPASS );
+
+	result = xTaskCreate( taskGREEN_LED_OFF, "GREEN_LED_OFF", 1000, NULL, 1, handleGREEN_LED_OFF );
+	configASSERT( result == pdPASS );
+
+	result = xTaskCreate( taskGREEN_LED_BLINK, "GREEN_LED_BLINK", 1000, NULL, 1, handleGREEN_LED_BLINK );
+	configASSERT( result == pdPASS );
+
+	result = xTaskCreate( taskRED_LED_ON, "RED_LED_ON", 1000, NULL, 1, handleRED_LED_ON );
+	configASSERT( result == pdPASS );
+
+	result = xTaskCreate( taskRED_LED_OFF, "RED_LED_OFF", 1000, NULL, 1, handleRED_LED_OFF );
+	configASSERT( result == pdPASS );
+
+	result = xTaskCreate( taskRED_LED_BLINK, "RED_LED_BLINK", 1000, NULL, 1, handleRED_LED_BLINK );
+	configASSERT( result == pdPASS );
+
+	/* Start the scheduler. */
+	vTaskStartScheduler();
+
+}
+
+void taskGREEN_LED_ON( void *pvParameters ){
 	APP_GREEN_LED_ON();
 	while(1);
 }
 
-void taskAPP_GREEN_LED_OFF( void *pvParameters ){
+void taskGREEN_LED_OFF( void *pvParameters ){
 	APP_GREEN_LED_OFF();
 	while(1);
 }
 
-void taskAPP_GREEN_LED_BLINK( void *pvParameters ){
+void taskGREEN_LED_BLINK( void *pvParameters ){
 	APP_GREEN_LED_BLINK();
 	while(1);
 }
 
-void taskAPP_RED_LED_ON( void *pvParameters ){
+void taskRED_LED_ON( void *pvParameters ){
 	APP_RED_LED_ON();
 	while(1);
 }
 
-void taskAPP_RED_LED_OFF( void *pvParameters ){
+void taskRED_LED_OFF( void *pvParameters ){
 	APP_RED_LED_OFF();
 	while(1);
 }
-void taskAPP_RED_LED_BLINK( void *pvParameters ){
+void taskRED_LED_BLINK( void *pvParameters ){
 	APP_RED_LED_BLINK();
 	while(1);
 }
