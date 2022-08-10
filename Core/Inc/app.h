@@ -21,7 +21,7 @@ void APP_RED_LED_BLINK();
 
 void uart_log(uint8_t * str);
 
-void FreeRTOSInit();
+void AppInit();
 
 void taskGREEN_LED_ON(void *pvParameters);
 void taskGREEN_LED_OFF(void *pvParameters);
@@ -30,6 +30,15 @@ void taskGREEN_LED_BLINK(void *pvParameters);
 void taskRED_LED_ON(void *pvParameters);
 void taskRED_LED_OFF(void *pvParameters);
 void taskRED_LED_BLINK(void *pvParameters);
+
+
+void GREEN_LED_ON();
+void GREEN_LED_OFF();
+void GREEN_LED_BLINK();
+
+void RED_LED_ON();
+void RED_LED_OFF();
+void RED_LED_BLINK();
 
 
 #endif /* INC_APP_H_ */

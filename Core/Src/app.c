@@ -13,48 +13,6 @@
 
 extern UART_HandleTypeDef huart1;
 
-void APP_GREEN_LED_ON(){
-	uint8_t log[] = "APP_GREEN_LED_ON\r\n";
-	uart_log(log);
-	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, SET);
-}
-
-void APP_GREEN_LED_OFF(){
-	uint8_t log[] = "APP_GREEN_LED_OFF\r\n";
-	uart_log(log);
-	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, RESET);
-}
-
-void APP_GREEN_LED_BLINK(){
-	uint8_t log[] = "APP_GREEN_LED_BLINK\r\n";
-	uart_log(log);
-	HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
-}
-
-void APP_RED_LED_ON(){
-	uint8_t log[] = "APP_RED_LED_ON\r\n";
-	uart_log(log);
-	HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, SET);
-}
-
-void APP_RED_LED_OFF(){
-	uint8_t log[] = "APP_RED_LED_OFF\r\n";
-	uart_log(log);
-	HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, RESET);
-}
-
-void APP_RED_LED_BLINK(){
-	uint8_t log[] = "APP_RED_LED_BLINK\r\n";
-	uart_log(log);
-	HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
-}
-
-void uart_log(uint8_t * str){
-	HAL_UART_Transmit(&huart1, str, strlen((char *)str), HAL_MAX_DELAY);
-}
-
-
-
 /*FreeRTOS Tasks*/
 
 TaskHandle_t 	*handleGREEN_LED_ON,
@@ -63,6 +21,8 @@ TaskHandle_t 	*handleGREEN_LED_ON,
 				*handleRED_LED_ON,
 				*handleRED_LED_OFF,
 				*handleRED_LED_BLINK;
+
+
 
 void AppInit(){
 
@@ -83,38 +43,121 @@ void AppInit(){
 
 	result = xTaskCreate( taskRED_LED_BLINK, "RED_LED_BLINK", 1000, NULL, 1, handleRED_LED_BLINK );
 	configASSERT( result == pdPASS );
-
+	GREEN_LED_ON();
+	uint8_t log[] = "vTaskStartScheduler\r\n";
+	uart_log(log);
 	/* Start the scheduler. */
 	vTaskStartScheduler();
 
 }
 
+void uart_log(uint8_t * str){
+	HAL_UART_Transmit(&huart1, str, strlen((char *)str), HAL_MAX_DELAY);
+}
+
+
+/*Task declaration functions*/
+
 void taskGREEN_LED_ON( void *pvParameters ){
-	APP_GREEN_LED_ON();
+	GREEN_LED_ON();
 	while(1);
 }
 
 void taskGREEN_LED_OFF( void *pvParameters ){
-	APP_GREEN_LED_OFF();
+	GREEN_LED_OFF();
 	while(1);
 }
 
 void taskGREEN_LED_BLINK( void *pvParameters ){
-	APP_GREEN_LED_BLINK();
+	GREEN_LED_BLINK();
 	while(1);
 }
 
 void taskRED_LED_ON( void *pvParameters ){
-	APP_RED_LED_ON();
+	RED_LED_ON();
 	while(1);
 }
 
 void taskRED_LED_OFF( void *pvParameters ){
-	APP_RED_LED_OFF();
-	while(1);
-}
-void taskRED_LED_BLINK( void *pvParameters ){
-	APP_RED_LED_BLINK();
+	RED_LED_OFF();
 	while(1);
 }
 
+void taskRED_LED_BLINK( void *pvParameters ){
+	RED_LED_BLINK();
+	while(1);
+}
+
+
+
+/*Task handler functions*/
+
+void GREEN_LED_ON(){
+	uint8_t log[] = "APP_GREEN_LED_ON\r\n";
+	uart_log(log);
+	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, SET);
+}
+
+void GREEN_LED_OFF(){
+	uint8_t log[] = "APP_GREEN_LED_OFF\r\n";
+	uart_log(log);
+	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, RESET);
+}
+
+void GREEN_LED_BLINK(){
+	uint8_t log[] = "APP_GREEN_LED_BLINK\r\n";
+	uart_log(log);
+	HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
+}
+
+void RED_LED_ON(){
+	uint8_t log[] = "APP_RED_LED_ON\r\n";
+	uart_log(log);
+	HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, SET);
+}
+
+void RED_LED_OFF(){
+	uint8_t log[] = "APP_RED_LED_OFF\r\n";
+	uart_log(log);
+	HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, RESET);
+}
+
+void RED_LED_BLINK(){
+	uint8_t log[] = "APP_RED_LED_BLINK\r\n";
+	uart_log(log);
+	HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
+}
+
+
+
+/*sSTAET MACHINE API*/
+
+void APP_GREEN_LED_ON(){
+	uint8_t log[] = "APP_GREEN_LED_ON\r\n";
+	uart_log(log);
+}
+
+void APP_GREEN_LED_OFF(){
+	uint8_t log[] = "APP_GREEN_LED_OFF\r\n";
+	uart_log(log);
+}
+
+void APP_GREEN_LED_BLINK(){
+	uint8_t log[] = "APP_GREEN_LED_BLINK\r\n";
+	uart_log(log);
+}
+
+void APP_RED_LED_ON(){
+	uint8_t log[] = "APP_RED_LED_ON\r\n";
+	uart_log(log);
+}
+
+void APP_RED_LED_OFF(){
+	uint8_t log[] = "APP_RED_LED_OFF\r\n";
+	uart_log(log);
+}
+
+void APP_RED_LED_BLINK(){
+	uint8_t log[] = "APP_RED_LED_BLINK\r\n";
+	uart_log(log);
+}
