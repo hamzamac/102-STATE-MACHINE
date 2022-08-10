@@ -43,7 +43,7 @@ void AppInit(){
 
 	result = xTaskCreate( taskRED_LED_BLINK, "RED_LED_BLINK", 1000, NULL, 1, handleRED_LED_BLINK );
 	configASSERT( result == pdPASS );
-	GREEN_LED_ON();
+
 	uint8_t log[] = "vTaskStartScheduler\r\n";
 	uart_log(log);
 	/* Start the scheduler. */
@@ -93,37 +93,37 @@ void taskRED_LED_BLINK( void *pvParameters ){
 /*Task handler functions*/
 
 void GREEN_LED_ON(){
-	uint8_t log[] = "APP_GREEN_LED_ON\r\n";
+	uint8_t log[] = "GREEN_LED_ON\r\n";
 	uart_log(log);
 	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, SET);
 }
 
 void GREEN_LED_OFF(){
-	uint8_t log[] = "APP_GREEN_LED_OFF\r\n";
+	uint8_t log[] = "GREEN_LED_OFF\r\n";
 	uart_log(log);
 	HAL_GPIO_WritePin(LD3_GPIO_Port, LD3_Pin, RESET);
 }
 
 void GREEN_LED_BLINK(){
-	uint8_t log[] = "APP_GREEN_LED_BLINK\r\n";
+	uint8_t log[] = "GREEN_LED_BLINK\r\n";
 	uart_log(log);
 	HAL_GPIO_TogglePin(LD3_GPIO_Port, LD3_Pin);
 }
 
 void RED_LED_ON(){
-	uint8_t log[] = "APP_RED_LED_ON\r\n";
+	uint8_t log[] = "RED_LED_ON\r\n";
 	uart_log(log);
 	HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, SET);
 }
 
 void RED_LED_OFF(){
-	uint8_t log[] = "APP_RED_LED_OFF\r\n";
+	uint8_t log[] = "RED_LED_OFF\r\n";
 	uart_log(log);
 	HAL_GPIO_WritePin(LD4_GPIO_Port, LD4_Pin, RESET);
 }
 
 void RED_LED_BLINK(){
-	uint8_t log[] = "APP_RED_LED_BLINK\r\n";
+	uint8_t log[] = "RED_LED_BLINK\r\n";
 	uart_log(log);
 	HAL_GPIO_TogglePin(LD4_GPIO_Port, LD4_Pin);
 }

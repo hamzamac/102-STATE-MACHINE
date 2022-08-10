@@ -96,6 +96,8 @@ int main(void)
   AppInit();
 
 
+
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -103,8 +105,6 @@ int main(void)
 
   while (1)
   {
-	 HAL_Delay(500);
-	 Lamp_blink(&lamp);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -167,7 +167,6 @@ void Q_onAssert( char const * 	module, int_t 	location ){
 }
 
 void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin){
-
 	if(GPIO_Pin == BUTTON_2_Pin){
 		Lamp_pushSwitch(&lamp);
 	}else{
